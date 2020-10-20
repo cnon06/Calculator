@@ -43,8 +43,7 @@
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
                 android:background="#06570A"
-                android:text="7"
-                app:backgroundTint="#4CAF50" />
+                android:text="7" />
 
             <Button
                 android:id="@+id/eight"
