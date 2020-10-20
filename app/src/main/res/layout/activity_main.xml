@@ -18,7 +18,7 @@
             android:gravity="center">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/display"
                 android:layout_width="wrap_content"
                 android:layout_height="34dp"
                 android:layout_marginTop="20dp"
@@ -215,7 +215,8 @@
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
                 android:background="#06570A"
-                android:text="C" />
+                android:text="C"
+                android:textSize="24sp" />
 
             <Button
                 android:id="@+id/sqr"
