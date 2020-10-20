@@ -24,6 +24,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
                 android:layout_span="4"
+                android:background="#DDE686"
                 android:gravity="center|right"
                 android:text="0"
                 android:textSize="24sp"
@@ -37,31 +38,36 @@
             android:gravity="center">
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/seven"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
-                android:text="7" />
+                android:background="#06570A"
+                android:text="7"
+                app:backgroundTint="#4CAF50" />
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/eight"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
+                android:background="#06570A"
                 android:text="8" />
 
             <Button
-                android:id="@+id/button5"
+                android:id="@+id/nine"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
+                android:background="#06570A"
                 android:text="9" />
 
             <Button
-                android:id="@+id/button6"
+                android:id="@+id/divide"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
+                android:background="#06570A"
                 android:text="/" />
 
         </TableRow>
@@ -72,31 +78,35 @@
             android:gravity="center">
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/four"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
+                android:background="#06570A"
                 android:text="4" />
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/five"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
+                android:background="#06570A"
                 android:text="5" />
 
             <Button
-                android:id="@+id/button5"
+                android:id="@+id/six"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
+                android:background="#06570A"
                 android:text="6" />
 
             <Button
-                android:id="@+id/button6"
+                android:id="@+id/multiple"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
+                android:background="#06570A"
                 android:text="X" />
 
         </TableRow>
@@ -107,31 +117,35 @@
             android:gravity="center">
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/one"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
+                android:background="#06570A"
                 android:text="1" />
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/two"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
+                android:background="#06570A"
                 android:text="2" />
 
             <Button
-                android:id="@+id/button5"
+                android:id="@+id/three"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
+                android:background="#06570A"
                 android:text="3" />
 
             <Button
-                android:id="@+id/button6"
+                android:id="@+id/subtract"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
+                android:background="#06570A"
                 android:text="-" />
 
         </TableRow>
@@ -142,31 +156,35 @@
             android:gravity="center">
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/zero"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
+                android:background="#06570A"
                 android:text="0" />
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/dot"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
+                android:background="#06570A"
                 android:text="." />
 
             <Button
-                android:id="@+id/button5"
+                android:id="@+id/equal"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
+                android:background="#06570A"
                 android:text="=" />
 
             <Button
-                android:id="@+id/button6"
+                android:id="@+id/add"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
+                android:background="#06570A"
                 android:text="+" />
 
         </TableRow>
@@ -177,31 +195,35 @@
             android:gravity="center">
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/clear"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
+                android:background="#06570A"
                 android:text="C" />
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/sqr"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
+                android:background="#06570A"
                 android:text="√" />
 
             <Button
-                android:id="@+id/button5"
+                android:id="@+id/n_p"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
+                android:background="#06570A"
                 android:text="-+" />
 
             <Button
-                android:id="@+id/button6"
+                android:id="@+id/percent"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
+                android:background="#06570A"
                 android:text="%" />
 
         </TableRow>
