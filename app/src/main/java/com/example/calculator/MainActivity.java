@@ -12,15 +12,20 @@ public class MainActivity extends AppCompatActivity {
 
     TextView display;
 
-    Button one,two,three,four,five,six,seven,eight,nine,zero,clear,add;
+    Button one,two,three,four,five,six,seven,eight,nine,zero,clear,add,subtract;
 
     String dsp="0";
     Integer number_one=0,number_two=0;
+
+    boolean sub_cont=true;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         display = (TextView) findViewById(R.id.display);
 
@@ -35,8 +40,45 @@ public class MainActivity extends AppCompatActivity {
         nine = (Button) findViewById(R.id.nine);
         zero = (Button) findViewById(R.id.zero);
         add = (Button) findViewById(R.id.add);
+        subtract = (Button) findViewById(R.id.subtract);
 
         clear = (Button) findViewById(R.id.clear);
+
+        subtract.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // if(dsp=="0") dsp="";
+                // dsp+="1";
+
+                int subb2=Integer.parseInt(display.getText().toString());
+
+
+
+                   if(sub_cont && subb2!=0)
+                   {
+                       number_one=subb2;
+                       sub_cont=false;
+                   }
+
+                   else
+
+                   {
+                       number_one-=subb2;
+
+
+
+                       // number_two=
+
+                       //display.setText("");
+
+                   }
+
+                dsp="";
+                display.setText(number_one+"");
+
+            }
+        });
+
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -148,6 +190,7 @@ public class MainActivity extends AppCompatActivity {
                 dsp="0";
                 number_one=0;
                 display.setText(dsp);
+                sub_cont=true;
             }
         });
 
