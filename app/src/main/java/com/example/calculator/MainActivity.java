@@ -12,9 +12,10 @@ public class MainActivity extends AppCompatActivity {
 
     TextView display;
 
-    Button one,two,three,four,five,six,seven,eight,nine,zero,clear;
+    Button one,two,three,four,five,six,seven,eight,nine,zero,clear,add;
 
     String dsp="0";
+    Integer number_one=0,number_two=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +34,23 @@ public class MainActivity extends AppCompatActivity {
         eight = (Button) findViewById(R.id.eight);
         nine = (Button) findViewById(R.id.nine);
         zero = (Button) findViewById(R.id.zero);
-
+        add = (Button) findViewById(R.id.add);
 
         clear = (Button) findViewById(R.id.clear);
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               // if(dsp=="0") dsp="";
+               // dsp+="1";
+               number_one+=Integer.parseInt(display.getText().toString());
+
+               //display.setText("");
+                dsp="";
+                display.setText(number_one+"");
+            }
+        });
+
 
         one.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dsp="0";
+                number_one=0;
                 display.setText(dsp);
             }
         });
