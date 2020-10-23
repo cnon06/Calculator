@@ -18,7 +18,7 @@
             android:gravity="center">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/display"
                 android:layout_width="wrap_content"
                 android:layout_height="34dp"
                 android:layout_marginTop="20dp"
@@ -43,7 +43,8 @@
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
                 android:background="#06570A"
-                android:text="7" />
+                android:text="7"
+                android:textSize="24sp" />
 
             <Button
                 android:id="@+id/eight"
@@ -51,7 +52,8 @@
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
                 android:background="#06570A"
-                android:text="8" />
+                android:text="8"
+                android:textSize="24sp" />
 
             <Button
                 android:id="@+id/nine"
@@ -59,7 +61,8 @@
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
                 android:background="#06570A"
-                android:text="9" />
+                android:text="9"
+                android:textSize="24sp" />
 
             <Button
                 android:id="@+id/divide"
@@ -67,7 +70,8 @@
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
                 android:background="#06570A"
-                android:text="/" />
+                android:text="/"
+                android:textSize="24sp" />
 
         </TableRow>
 
@@ -82,7 +86,8 @@
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
                 android:background="#06570A"
-                android:text="4" />
+                android:text="4"
+                android:textSize="24sp" />
 
             <Button
                 android:id="@+id/five"
@@ -90,7 +95,8 @@
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
                 android:background="#06570A"
-                android:text="5" />
+                android:text="5"
+                android:textSize="24sp" />
 
             <Button
                 android:id="@+id/six"
@@ -98,7 +104,8 @@
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
                 android:background="#06570A"
-                android:text="6" />
+                android:text="6"
+                android:textSize="24sp" />
 
             <Button
                 android:id="@+id/multiple"
@@ -106,7 +113,8 @@
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
                 android:background="#06570A"
-                android:text="X" />
+                android:text="X"
+                android:textSize="24sp" />
 
         </TableRow>
 
@@ -121,7 +129,8 @@
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
                 android:background="#06570A"
-                android:text="1" />
+                android:text="1"
+                android:textSize="24sp" />
 
             <Button
                 android:id="@+id/two"
@@ -129,7 +138,8 @@
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
                 android:background="#06570A"
-                android:text="2" />
+                android:text="2"
+                android:textSize="24sp" />
 
             <Button
                 android:id="@+id/three"
@@ -137,7 +147,8 @@
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
                 android:background="#06570A"
-                android:text="3" />
+                android:text="3"
+                android:textSize="24sp" />
 
             <Button
                 android:id="@+id/subtract"
@@ -145,7 +156,8 @@
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
                 android:background="#06570A"
-                android:text="-" />
+                android:text="-"
+                android:textSize="24sp" />
 
         </TableRow>
 
@@ -160,7 +172,8 @@
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
                 android:background="#06570A"
-                android:text="0" />
+                android:text="0"
+                android:textSize="24sp" />
 
             <Button
                 android:id="@+id/dot"
@@ -168,7 +181,8 @@
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
                 android:background="#06570A"
-                android:text="." />
+                android:text="."
+                android:textSize="24sp" />
 
             <Button
                 android:id="@+id/equal"
@@ -176,7 +190,8 @@
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
                 android:background="#06570A"
-                android:text="=" />
+                android:text="="
+                android:textSize="24sp" />
 
             <Button
                 android:id="@+id/add"
@@ -184,7 +199,8 @@
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
                 android:background="#06570A"
-                android:text="+" />
+                android:text="+"
+                android:textSize="24sp" />
 
         </TableRow>
 
@@ -199,7 +215,8 @@
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
                 android:background="#06570A"
-                android:text="C" />
+                android:text="C"
+                android:textSize="24sp" />
 
             <Button
                 android:id="@+id/sqr"
@@ -207,7 +224,8 @@
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
                 android:background="#06570A"
-                android:text="√" />
+                android:text="√"
+                android:textSize="24sp" />
 
             <Button
                 android:id="@+id/n_p"
@@ -215,7 +233,8 @@
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
                 android:background="#06570A"
-                android:text="-+" />
+                android:text="-+"
+                android:textSize="24sp" />
 
             <Button
                 android:id="@+id/percent"
@@ -223,7 +242,8 @@
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
                 android:background="#06570A"
-                android:text="%" />
+                android:text="%"
+                android:textSize="24sp" />
 
         </TableRow>
 
