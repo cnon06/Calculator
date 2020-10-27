@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView display;
 
-    Button one,two,three,four,five,six,seven,eight,nine,zero,clear,add,subtract;
+    Button one,two,three,four,five,six,seven,eight,nine,zero,clear,add,subtract,multiply;
 
     String dsp="0";
     Integer number_one=0,number_two=0;
@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         zero = (Button) findViewById(R.id.zero);
         add = (Button) findViewById(R.id.add);
         subtract = (Button) findViewById(R.id.subtract);
+        multiply = (Button) findViewById(R.id.multiple);
 
         clear = (Button) findViewById(R.id.clear);
 
@@ -87,6 +88,26 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
+
+
+        multiply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(add_cont)
+                {
+                   if(number_one==0) number_one=1;
+                    number_one*=Integer.parseInt(display.getText().toString());
+                    dsp="";
+                    display.setText(number_one+"");
+                    add_cont=false;
+                }
+
+            }
+        });
+
 
 
         add.setOnClickListener(new View.OnClickListener() {
