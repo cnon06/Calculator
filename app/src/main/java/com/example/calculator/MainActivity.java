@@ -1,23 +1,89 @@
 package com.example.calculator;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+
+/*
+class MyDialogFragment extends DialogFragment {
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+        // Use the Builder class for convenient dialog construction
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("App Title");
+        builder.setMessage("This is an alert with no consequence");
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // You don't have to do anything here if you just
+                // want it dismissed when clicked
+            }
+        });
+
+        // Create the AlertDialog object and return it
+        return builder.create();
+    }
+}
+
+ */
+
 
 public class MainActivity extends AppCompatActivity {
 
 
     TextView display;
 
-    Button one,two,three,four,five,six,seven,eight,nine,zero,clear,add,subtract,multiply;
+    Button one,two,three,four,five,six,seven,eight,nine,zero,clear,add,subtract,multiply,divide;
+
+    //DialogFragment dialog = new MyDialogFragment();
+
+
 
     String dsp="0";
     Integer number_one=0,number_two=0;
 
-    boolean sub_cont=true,add_cont=true;
+
+    boolean sub_cont=true,add_cont=true, div_cont=true;
+
+
+    @Override
+    protected Dialog onCreateDialog(int id)
+    {
+        switch(id)
+        {
+            case 0:
+            {
+                return new AlertDialog.Builder(this)
+                        .setMessage("text here")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(DialogInterface arg0, int arg1)
+                            {
+                                try
+                                {
+
+                                }//end try
+                                catch(Exception e)
+                                {
+                                    Toast.makeText(getBaseContext(),  "", Toast.LENGTH_LONG).show();
+                                }//end catch
+                            }//end onClick()
+                        }).create();
+            }//end case
+        }//end switch
+        return null;
+    }//end onCreateDialog
+
 
 
     public void numbers(String number)
@@ -51,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
         add = (Button) findViewById(R.id.add);
         subtract = (Button) findViewById(R.id.subtract);
         multiply = (Button) findViewById(R.id.multiple);
+        divide = (Button) findViewById(R.id.divide);
 
         clear = (Button) findViewById(R.id.clear);
 
@@ -89,6 +156,39 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
+        divide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(add_cont)
+                {
+                    if (div_cont)
+                    {
+                        number_one=Integer.parseInt(display.getText().toString());
+                        div_cont=false;
+                    }
+                    else
+                    {
+                        if(number_one==0) number_one=1;
+                        number_one/=Integer.parseInt(display.getText().toString());
+
+
+                        //dialog.show(getSupportFragmentManager(), "MyDialogFragmentTag");
+                        //System.out.println("Sinan");
+                        // Dialog.
+                        // Float number_two = 6.0F ;
+                        //number_two/=Float.parseFloat(display.getText().toString());
+
+                        display.setText(number_one+"");
+                        add_cont=false;
+                    }
+
+                }
+                dsp="";
+            }
+        });
 
 
 
@@ -264,6 +364,7 @@ public class MainActivity extends AppCompatActivity {
                 number_one=0;
                 display.setText(dsp);
                 sub_cont=true;
+                div_cont=true;
             }
         });
 
