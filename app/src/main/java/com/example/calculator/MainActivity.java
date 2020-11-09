@@ -49,41 +49,14 @@ public class MainActivity extends AppCompatActivity {
 
 
     String dsp="0";
-    Integer number_one=0,number_two=0;
+   Float number_one =0.0F;
+   // Integer  number_one=0,number_two=0;
 
 
     boolean sub_cont=true,add_cont=true, div_cont=true;
 
 
-    @Override
-    protected Dialog onCreateDialog(int id)
-    {
-        switch(id)
-        {
-            case 0:
-            {
-                return new AlertDialog.Builder(this)
-                        .setMessage("text here")
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener()
-                        {
-                            @Override
-                            public void onClick(DialogInterface arg0, int arg1)
-                            {
-                                try
-                                {
-
-                                }//end try
-                                catch(Exception e)
-                                {
-                                    Toast.makeText(getBaseContext(),  "", Toast.LENGTH_LONG).show();
-                                }//end catch
-                            }//end onClick()
-                        }).create();
-            }//end case
-        }//end switch
-        return null;
-    }//end onCreateDialog
-
+   
 
 
     public void numbers(String number)
@@ -133,7 +106,9 @@ public class MainActivity extends AppCompatActivity {
 
                    if(sub_cont && subb2!=0)
                    {
-                       number_one=subb2;
+
+                       number_one = (float) subb2;
+                       //number_one=subb2;
                        sub_cont=false;
                    }
 
@@ -166,12 +141,14 @@ public class MainActivity extends AppCompatActivity {
                 {
                     if (div_cont)
                     {
-                        number_one=Integer.parseInt(display.getText().toString());
+                        number_one=Float.parseFloat(display.getText().toString());
+                        //number_one=Integer.parseInt(display.getText().toString());
                         div_cont=false;
                     }
                     else
                     {
-                        if(number_one==0) number_one=1;
+                        if(number_one==0) number_one=1.0F;
+
                         number_one/=Integer.parseInt(display.getText().toString());
 
 
@@ -198,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if(add_cont)
                 {
-                   if(number_one==0) number_one=1;
+                   if(number_one==0) number_one=1.0F;
                     number_one*=Integer.parseInt(display.getText().toString());
                     dsp="";
                     display.setText(number_one+"");
@@ -361,7 +338,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dsp="0";
-                number_one=0;
+                number_one=0.F;
                 display.setText(dsp);
                 sub_cont=true;
                 div_cont=true;
