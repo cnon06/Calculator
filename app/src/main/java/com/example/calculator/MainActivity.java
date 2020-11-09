@@ -56,6 +56,32 @@ public class MainActivity extends AppCompatActivity {
     boolean sub_cont=true,add_cont=true, div_cont=true;
 
 
+
+    public  void remove_zero()
+    {
+
+        Integer number_two = (int)Math.floor(number_one);
+
+        Float number_three = number_one - (float)number_two;
+        boolean zero_or_not = true;
+        if(number_three==0.0F) zero_or_not=true; else  zero_or_not = false;
+
+        AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage(number_three+" "+zero_or_not);
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+
+
+
+        alertDialog.show();
+
+    }
    
 
 
@@ -164,6 +190,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }
                 dsp="";
+                remove_zero();
             }
         });
 
