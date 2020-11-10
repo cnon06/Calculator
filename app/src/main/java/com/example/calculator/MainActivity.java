@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    String dsp="0";
+    String dsp="0", div_wrt="";
    Float number_one =0.0F;
    // Integer  number_one=0,number_two=0;
 
@@ -64,9 +64,21 @@ public class MainActivity extends AppCompatActivity {
 
         Float number_three = number_one - (float)number_two;
         boolean zero_or_not = true;
-        if(number_three==0.0F) zero_or_not=true; else  zero_or_not = false;
+        if(number_three==0.0F)
+        {
+            display.setText(number_two+"");
+        }
+           else
+        {
+            display.setText(number_one+"");
+        }
+            //zero_or_not=true; else  zero_or_not = false;
 
-        AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+
+
+
+        /*
+            AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
         alertDialog.setTitle("Alert");
         alertDialog.setMessage(number_three+" "+zero_or_not);
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
@@ -80,6 +92,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         alertDialog.show();
+         */
+
 
     }
    
@@ -183,14 +197,14 @@ public class MainActivity extends AppCompatActivity {
                         // Dialog.
                         // Float number_two = 6.0F ;
                         //number_two/=Float.parseFloat(display.getText().toString());
+                        remove_zero();
 
-                        display.setText(number_one+"");
                         add_cont=false;
                     }
 
                 }
                 dsp="";
-                remove_zero();
+
             }
         });
 
