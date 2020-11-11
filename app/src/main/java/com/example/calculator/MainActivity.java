@@ -140,8 +140,9 @@ public class MainActivity extends AppCompatActivity {
                 // if(dsp=="0") dsp="";
                 // dsp+="1";
 
-                int subb2=Integer.parseInt(display.getText().toString());
-
+                //int subb2=Integer.parseInt(display.getText().toString());
+                //number_one=Float.parseFloat(display.getText().toString());
+                Float subb2=Float.parseFloat(display.getText().toString());
 
 
                    if(sub_cont && subb2!=0)
@@ -166,8 +167,8 @@ public class MainActivity extends AppCompatActivity {
                    }
 
                 dsp="";
-                display.setText(number_one+"");
-
+                //display.setText(number_one+"");
+                remove_zero();
             }
         });
 
@@ -217,9 +218,11 @@ public class MainActivity extends AppCompatActivity {
                 if(add_cont)
                 {
                    if(number_one==0) number_one=1.0F;
-                    number_one*=Integer.parseInt(display.getText().toString());
+                   // number_one*=Integer.parseInt(display.getText().toString());
+                    number_one*= Float.parseFloat(display.getText().toString());
                     dsp="";
-                    display.setText(number_one+"");
+                    remove_zero();
+                    //display.setText(number_one+"");
                     add_cont=false;
                 }
 
@@ -234,9 +237,11 @@ public class MainActivity extends AppCompatActivity {
 
                 if(add_cont)
                 {
-                    number_one+=Integer.parseInt(display.getText().toString());
+                    //number_one+=Integer.parseInt(display.getText().toString());
+                    number_one+= Float.parseFloat(display.getText().toString());
                     dsp="";
-                    display.setText(number_one+"");
+                    remove_zero();
+                    //display.setText(number_one+"");
                     add_cont=false;
                 }
 
