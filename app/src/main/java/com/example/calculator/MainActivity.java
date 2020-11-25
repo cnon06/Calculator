@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
     //DialogFragment dialog = new MyDialogFragment();
 
-
+    Boolean lock_unlock =false;
 
     String dsp="0", div_wrt="",Process="";
    Float number_one =0.0F,number_four=0.0F;
@@ -97,10 +97,19 @@ public class MainActivity extends AppCompatActivity {
 
    }
 
-
     public  void process()
     {
+       if(lock_unlock)
+       {
+           in_process();
+           lock_unlock=false;
+       }
+    }
+
+    public  void in_process()
+    {
         //msg_box(Process+" number_one: "+number_one);
+
 
 
        switch (Process)
@@ -164,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
     {
 
 
-        dsp+=number;
+ dsp+=number;
 
         if(dsp.charAt(0)=='0')
         {
@@ -173,7 +182,13 @@ public class MainActivity extends AppCompatActivity {
 
         display.setText(dsp);
 
+
+           lock_unlock=true;
+
+
     }
+
+
 
 
     @Override
