@@ -46,26 +46,149 @@ public class MainActivity extends AppCompatActivity {
 
     //DialogFragment dialog = new MyDialogFragment();
 
+    Boolean lock_unlock =false;
 
-
-    String dsp="0";
-   Float number_one =0.0F;
+    String dsp="0", div_wrt="",Process="";
+   Float number_one =0.0F,number_four=0.0F;
    // Integer  number_one=0,number_two=0;
 
 
-    boolean sub_cont=true,add_cont=true, div_cont=true;
+   // boolean sub_cont=true,add_cont=true, div_cont=true;
 
 
+
+    public  void remove_zero()
+   {
+       Integer number_two = (int)Math.floor(number_one);
+
+       Float number_three = number_one - (float)number_two;
+       boolean zero_or_not = true;
+       if(number_three==0.0F)
+       {
+           display.setText(number_two+"");
+       }
+       else
+       {
+           display.setText(number_one+"");
+       }
+       //zero_or_not=true; else  zero_or_not = false;
+
+
+   }
+
+
+   public void msg_box(String msg)
+   {
+
+  AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage(msg);
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+
+
+
+        alertDialog.show();
+
+   }
+
+    public  void process()
+    {
+       if(lock_unlock)
+       {
+           in_process();
+           lock_unlock=false;
+       }
+    }
+
+    public  void in_process()
+    {
+        //msg_box(Process+" number_one: "+number_one);
+
+
+
+       switch (Process)
+       {
+
+           case "":
+               number_one=Float.parseFloat(display.getText().toString());
+               break;
+
+           case "/":
+
+
+
+                       number_one/=Float.parseFloat(display.getText().toString());
+               remove_zero();
+
+
+
+               break;
+
+           case "*":
+
+
+
+
+                   number_one*= Float.parseFloat(display.getText().toString());
+               remove_zero();
+
+               break;
+
+           case "+":
+               number_one+= Float.parseFloat(display.getText().toString());
+               remove_zero();
+               break;
+
+           case "-":
+
+               number_one-= Float.parseFloat(display.getText().toString());
+               remove_zero();
+               break;
+
+
+
+
+       }
+
+
+        //number_one=Float.parseFloat(display.getText().toString());
+        dsp="";
+
+
+
+
+
+
+    }
    
 
 
     public void numbers(String number)
     {
-        if(dsp=="0") dsp="";
-        dsp+=number;
+
+
+ dsp+=number;
+
+        if(dsp.charAt(0)=='0')
+        {
+            dsp =dsp.substring(1,dsp.length());
+        }
+
         display.setText(dsp);
-        add_cont=true;
+
+
+           lock_unlock=true;
+
+
     }
+
+
 
 
     @Override
@@ -92,41 +215,18 @@ public class MainActivity extends AppCompatActivity {
         multiply = (Button) findViewById(R.id.multiple);
         divide = (Button) findViewById(R.id.divide);
 
+
+
+
         clear = (Button) findViewById(R.id.clear);
 
         subtract.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // if(dsp=="0") dsp="";
-                // dsp+="1";
-
-                int subb2=Integer.parseInt(display.getText().toString());
 
 
-
-                   if(sub_cont && subb2!=0)
-                   {
-
-                       number_one = (float) subb2;
-                       //number_one=subb2;
-                       sub_cont=false;
-                   }
-
-                   else
-
-                   {
-                       number_one-=subb2;
-
-
-
-                       // number_two=
-
-                       //display.setText("");
-
-                   }
-
-                dsp="";
-                display.setText(number_one+"");
+                process();
+                Process="-";
 
             }
         });
@@ -137,33 +237,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(add_cont)
-                {
-                    if (div_cont)
-                    {
-                        number_one=Float.parseFloat(display.getText().toString());
-                        //number_one=Integer.parseInt(display.getText().toString());
-                        div_cont=false;
-                    }
-                    else
-                    {
-                        if(number_one==0) number_one=1.0F;
 
-                        number_one/=Integer.parseInt(display.getText().toString());
+                process();
+                Process="/";
 
 
-                        //dialog.show(getSupportFragmentManager(), "MyDialogFragmentTag");
-                        //System.out.println("Sinan");
-                        // Dialog.
-                        // Float number_two = 6.0F ;
-                        //number_two/=Float.parseFloat(display.getText().toString());
-
-                        display.setText(number_one+"");
-                        add_cont=false;
-                    }
-
-                }
-                dsp="";
             }
         });
 
@@ -173,14 +251,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(add_cont)
-                {
-                   if(number_one==0) number_one=1.0F;
-                    number_one*=Integer.parseInt(display.getText().toString());
-                    dsp="";
-                    display.setText(number_one+"");
-                    add_cont=false;
-                }
+                process();
+                Process="*";
 
             }
         });
@@ -191,13 +263,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(add_cont)
-                {
-                    number_one+=Integer.parseInt(display.getText().toString());
-                    dsp="";
-                    display.setText(number_one+"");
-                    add_cont=false;
-                }
+
+
+                    process();
+                Process="+";
+
 
             }
         });
@@ -211,11 +281,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 numbers("1");
-                /*
-                   if(dsp=="0") dsp="";
-                dsp+="1";
-                display.setText(dsp);
-                 */
+
 
                         }
         });
@@ -225,11 +291,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
              numbers("2");
-             /*
-               if(dsp=="0") dsp="";
-                dsp+="2";
-                display.setText(dsp);
-              */
+
 
             }
         });
@@ -238,11 +300,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 numbers("3");
-                /*
-                  if(dsp=="0") dsp="";
-                dsp+="3";
-                display.setText(dsp);
-                 */
+
 
             }
         });
@@ -251,11 +309,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 numbers("4");
-                /*
-                   if(dsp=="0") dsp="";
-                dsp+="4";
-                display.setText(dsp);
-                 */
+
 
             }
         });
@@ -264,11 +318,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 numbers("5");
-               /*
-                if(dsp=="0") dsp="";
-                dsp+="5";
-                display.setText(dsp);
-                */
+
 
             }
         });
@@ -277,11 +327,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 numbers("6");
-                /*
-                 if(dsp=="0") dsp="";
-                dsp+="6";
-                display.setText(dsp);
-                 */
+
 
             }
         });
@@ -290,11 +336,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                numbers("7");
-               /*
-                if(dsp=="0") dsp="";
-                dsp+="7";
-                display.setText(dsp);
-                */
 
             }
         });
@@ -303,11 +344,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                numbers("8");
-               /*
-                 if(dsp=="0") dsp="";
-                dsp+="8";
-                display.setText(dsp);
-                */
+
 
             }
         });
@@ -317,20 +354,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 numbers("9");
-                /*
-                  if(dsp=="0") dsp="";
-                dsp+="9";
-                display.setText(dsp);
-                 */
+
             }
         });
 
         zero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(dsp !="0") dsp+="0";;
+              numbers("0");
 
-                display.setText(dsp);
             }
         });
 
@@ -340,8 +372,10 @@ public class MainActivity extends AppCompatActivity {
                 dsp="0";
                 number_one=0.F;
                 display.setText(dsp);
-                sub_cont=true;
-                div_cont=true;
+               Process="";
+
+                // sub_cont=true;
+               // div_cont=true;
             }
         });
 
