@@ -233,8 +233,11 @@
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
                 android:background="#06570A"
-                android:text="-+"
-                android:textSize="24sp" />
+                android:insetBottom="1dp"
+                android:text="+-"
+                android:textSize="16sp"
+
+                app:iconPadding="6dp" />
 
             <Button
                 android:id="@+id/percent"

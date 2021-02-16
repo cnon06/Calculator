@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView display;
 
-    Button one,two,three,four,five,six,seven,eight,nine,zero,clear,add,subtract,multiply,divide;
+    Button one,two,three,four,five,six,seven,eight,nine,zero,clear,add,subtract,multiply,divide, equal;
 
     //DialogFragment dialog = new MyDialogFragment();
 
@@ -115,18 +115,25 @@ public class MainActivity extends AppCompatActivity {
        switch (Process)
        {
 
+           case "=":
+
+               number_one=Float.parseFloat(display.getText().toString());
+               remove_zero();
+
+               break;
+
+
            case "":
                number_one=Float.parseFloat(display.getText().toString());
                break;
 
+
+
+
            case "/":
-
-
 
                        number_one/=Float.parseFloat(display.getText().toString());
                remove_zero();
-
-
 
                break;
 
@@ -214,11 +221,25 @@ public class MainActivity extends AppCompatActivity {
         subtract = (Button) findViewById(R.id.subtract);
         multiply = (Button) findViewById(R.id.multiple);
         divide = (Button) findViewById(R.id.divide);
+        equal = (Button) findViewById(R.id.equal);
 
 
 
 
         clear = (Button) findViewById(R.id.clear);
+
+
+        equal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                process();
+                Process="=";
+
+            }
+        });
+
 
         subtract.setOnClickListener(new View.OnClickListener() {
             @Override
