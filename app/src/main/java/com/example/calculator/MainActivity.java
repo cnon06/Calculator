@@ -3,6 +3,7 @@ package com.example.calculator;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -13,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-/*
+
 class MyDialogFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -34,7 +35,10 @@ class MyDialogFragment extends DialogFragment {
     }
 }
 
- */
+
+
+
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -42,39 +46,10 @@ public class MainActivity extends AppCompatActivity {
 
     TextView display;
 
-    Button one,two,three,four,five,six,seven,eight,nine,zero,clear,add,subtract,multiply,divide, equal;
-
-    //DialogFragment dialog = new MyDialogFragment();
-
-    Boolean lock_unlock =false;
-
-    String dsp="0", div_wrt="",Process="";
-   Float number_one =0.0F,number_four=0.0F;
-   // Integer  number_one=0,number_two=0;
-
-
-   // boolean sub_cont=true,add_cont=true, div_cont=true;
+    Button one,two,three,four,five,six,seven,eight,nine,zero,clear,add,subtract,multiply,divide, equal, n_p, dot;
 
 
 
-    public  void remove_zero()
-   {
-       Integer number_two = (int)Math.floor(number_one);
-
-       Float number_three = number_one - (float)number_two;
-       boolean zero_or_not = true;
-       if(number_three==0.0F)
-       {
-           display.setText(number_two+"");
-       }
-       else
-       {
-           display.setText(number_one+"");
-       }
-       //zero_or_not=true; else  zero_or_not = false;
-
-
-   }
 
 
    public void msg_box(String msg)
@@ -97,105 +72,13 @@ public class MainActivity extends AppCompatActivity {
 
    }
 
-    public  void process()
-    {
-       if(lock_unlock)
-       {
-           in_process();
-           lock_unlock=false;
-       }
-    }
 
-    public  void in_process()
-    {
-        //msg_box(Process+" number_one: "+number_one);
+ public  void  numbers (String numbers)
+ {
 
-
-
-       switch (Process)
-       {
-
-           case "=":
-
-               number_one=Float.parseFloat(display.getText().toString());
-               remove_zero();
-
-               break;
-
-
-           case "":
-               number_one=Float.parseFloat(display.getText().toString());
-               break;
-
-
-
-
-           case "/":
-
-                       number_one/=Float.parseFloat(display.getText().toString());
-               remove_zero();
-
-               break;
-
-           case "*":
-
-
-
-
-                   number_one*= Float.parseFloat(display.getText().toString());
-               remove_zero();
-
-               break;
-
-           case "+":
-               number_one+= Float.parseFloat(display.getText().toString());
-               remove_zero();
-               break;
-
-           case "-":
-
-               number_one-= Float.parseFloat(display.getText().toString());
-               remove_zero();
-               break;
-
-
-
-
-       }
-
-
-        //number_one=Float.parseFloat(display.getText().toString());
-        dsp="";
-
-
-
-
-
-
-    }
-   
-
-
-    public void numbers(String number)
-    {
-
-
- dsp+=number;
-
-        if(dsp.charAt(0)=='0')
-        {
-            dsp =dsp.substring(1,dsp.length());
-        }
-
-        display.setText(dsp);
-
-
-           lock_unlock=true;
-
-
-    }
-
-
+if(display.getText().toString().length()<8)   if(!display.getText().toString().contains("."))  if(numbers!=".") if(0==Float.parseFloat(display.getText().toString())) display.setText("");
+     display.setText(display.getText()+numbers);
+ }
 
 
     @Override
@@ -222,6 +105,8 @@ public class MainActivity extends AppCompatActivity {
         multiply = (Button) findViewById(R.id.multiple);
         divide = (Button) findViewById(R.id.divide);
         equal = (Button) findViewById(R.id.equal);
+        n_p = (Button) findViewById(R.id.n_p);
+        dot =  (Button) findViewById(R.id.dot);
 
 
 
@@ -229,13 +114,58 @@ public class MainActivity extends AppCompatActivity {
         clear = (Button) findViewById(R.id.clear);
 
 
+
+        dot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(!display.getText().toString().contains(".")) numbers(".");
+                //msg_box("sinan".contains("z")+"");
+
+
+            }
+        });
+
+        n_p.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //if(display.getText().toString().length()<8)   if(!display.getText().toString().contains("."))  if(numbers!=".") if(0==Float.parseFloat(display.getText().toString())) display.setText("");
+
+
+                if(0!=Float.parseFloat(display.getText().toString()))
+                {
+                    String trr = display.getText().toString();
+                    //display.setText("-"+trr);
+
+                    if(trr.contains("-"))
+                    {
+                        //msg_box("sinan");
+                        trr= trr.replaceFirst("-","");
+                    }
+
+                    else
+                        trr = "-" + trr;
+
+                    display.setText(trr);
+                }
+
+
+
+
+
+
+
+            }
+        });
+
+
         equal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
-                process();
-                Process="=";
+            //msg_box("sinan");
+
 
             }
         });
@@ -246,8 +176,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                process();
-                Process="-";
+
 
             }
         });
@@ -259,8 +188,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                process();
-                Process="/";
 
 
             }
@@ -272,8 +199,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                process();
-                Process="*";
+
 
             }
         });
@@ -284,10 +210,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
-
-                    process();
-                Process="+";
 
 
             }
@@ -301,18 +223,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                numbers("1");
-
-
+                        numbers("1");
                         }
         });
 
         two.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-             numbers("2");
-
+                numbers("2");
 
             }
         });
@@ -329,8 +247,8 @@ public class MainActivity extends AppCompatActivity {
         four.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                numbers("4");
 
+                numbers("4");
 
             }
         });
@@ -338,8 +256,8 @@ public class MainActivity extends AppCompatActivity {
         five.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                numbers("5");
 
+                numbers("5");
 
             }
         });
@@ -356,16 +274,15 @@ public class MainActivity extends AppCompatActivity {
         seven.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               numbers("7");
-
+                numbers("7");
             }
         });
 
         eight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               numbers("8");
 
+                numbers("8");
 
             }
         });
@@ -382,7 +299,7 @@ public class MainActivity extends AppCompatActivity {
         zero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              numbers("0");
+                numbers("0");
 
             }
         });
@@ -390,13 +307,7 @@ public class MainActivity extends AppCompatActivity {
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dsp="0";
-                number_one=0.F;
-                display.setText(dsp);
-               Process="";
-
-                // sub_cont=true;
-               // div_cont=true;
+                display.setText("0");
             }
         });
 
