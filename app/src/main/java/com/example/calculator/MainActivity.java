@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,7 +50,9 @@ public class MainActivity extends AppCompatActivity {
     Button one,two,three,four,five,six,seven,eight,nine,zero,clear,add,subtract,multiply,divide, equal, n_p, dot;
 
 
-
+    String process = "";
+    Boolean process2=false,process3 = false;
+    Float number_one = null;
 
 
    public void msg_box(String msg)
@@ -73,11 +76,43 @@ public class MainActivity extends AppCompatActivity {
    }
 
 
- public  void  numbers (String numbers)
+
+   public void process()
+   {
+
+       switch (process)
+       {
+           case "+" :
+
+                  Float rt = number_one + Float.parseFloat(display.getText().toString());
+                   //msg_box(number_one+"+"+Float.parseFloat(display.getText().toString()));
+                   display.setText(rt+"");
+                  // number_one =null;
+                   process="";
+
+               break;
+
+       }
+       process3=false;
+
+
+   }
+
+ public  void numbers (String numbers)
  {
 
-if(display.getText().toString().length()<8)   if(!display.getText().toString().contains("."))  if(numbers!=".") if(0==Float.parseFloat(display.getText().toString())) display.setText("");
-     display.setText(display.getText()+numbers);
+if(display.getText().toString().length()<8) {
+    if(!display.getText().toString().contains("."))  if(numbers!=".") if(0==Float.parseFloat(display.getText().toString())) display.setText("");
+    display.setText(display.getText()+numbers); process3 =true;
+}
+
+     if (process2)
+     {
+         display.setText(numbers);
+         process2 =false;
+         //number_one = Float.parseFloat(display.getText().toString());
+         //msg_box(number_one.toString());
+     }
  }
 
 
@@ -147,6 +182,7 @@ if(display.getText().toString().length()<8)   if(!display.getText().toString().c
                         trr = "-" + trr;
 
                     display.setText(trr);
+                    number_one = Float.parseFloat(display.getText().toString());
                 }
 
 
@@ -209,6 +245,12 @@ if(display.getText().toString().length()<8)   if(!display.getText().toString().c
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                process2 =true;
+
+               if(process3) process();
+                process="+";
+                number_one = Float.parseFloat(display.getText().toString());
 
 
 
@@ -308,6 +350,7 @@ if(display.getText().toString().length()<8)   if(!display.getText().toString().c
             @Override
             public void onClick(View v) {
                 display.setText("0");
+                number_one=0.0f;
             }
         });
 
