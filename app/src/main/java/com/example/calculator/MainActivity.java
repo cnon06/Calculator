@@ -76,6 +76,16 @@ public class MainActivity extends AppCompatActivity {
    }
 
 
+   public  void remove_zero(String de )
+   {
+       String def = de.substring(de.indexOf('.'));
+
+       Float rref = Float.parseFloat(def);
+
+       if(rref==0.0f) de = de.subSequence(0,de.indexOf('.')).toString();
+
+       display.setText(de+"");
+   }
 
    public void process()
    {
@@ -85,9 +95,28 @@ public class MainActivity extends AppCompatActivity {
            case "+" :
 
                   Float rt = number_one + Float.parseFloat(display.getText().toString());
-                   //msg_box(number_one+"+"+Float.parseFloat(display.getText().toString()));
-                   display.setText(rt+"");
-                  // number_one =null;
+
+                   String de = rt+"";
+
+              remove_zero(de );
+
+
+               /*
+                 String def = de.substring(de.indexOf('.'));
+
+                   Float rref = Float.parseFloat(def);
+
+               if(rref==0.0f) de = de.subSequence(0,de.indexOf('.')).toString();
+               display.setText(de+"");
+                */
+
+
+
+
+
+                   
+
+
                    process="";
 
                break;
@@ -182,7 +211,7 @@ if(display.getText().toString().length()<8) {
                         trr = "-" + trr;
 
                     display.setText(trr);
-                    number_one = Float.parseFloat(display.getText().toString());
+                   // number_one = Float.parseFloat(display.getText().toString());
                 }
 
 
