@@ -92,32 +92,32 @@ public class MainActivity extends AppCompatActivity {
 
        switch (process)
        {
+
+           case "*" :
+
+               Float rt = number_one * Float.parseFloat(display.getText().toString());
+               String de = rt+"";
+               remove_zero(de );
+               process="";
+
+               break;
+
+
            case "+" :
 
-                  Float rt = number_one + Float.parseFloat(display.getText().toString());
+                  Float rt3 = number_one + Float.parseFloat(display.getText().toString());
+                  String de3 = rt3+"";
+                  remove_zero(de3 );
+                  process="";
 
-                   String de = rt+"";
+               break;
 
-              remove_zero(de );
+           case "-" :
 
-
-               /*
-                 String def = de.substring(de.indexOf('.'));
-
-                   Float rref = Float.parseFloat(def);
-
-               if(rref==0.0f) de = de.subSequence(0,de.indexOf('.')).toString();
-               display.setText(de+"");
-                */
-
-
-
-
-
-                   
-
-
-                   process="";
+               Float rt1 = number_one - Float.parseFloat(display.getText().toString());
+               String de1 = rt1+"";
+               remove_zero(de1 );
+               process="";
 
                break;
 
@@ -240,7 +240,11 @@ if(display.getText().toString().length()<8) {
             @Override
             public void onClick(View v) {
 
+                process2 =true;
 
+                if(process3) process();
+                process="-";
+                number_one = Float.parseFloat(display.getText().toString());
 
 
             }
@@ -264,7 +268,11 @@ if(display.getText().toString().length()<8) {
             @Override
             public void onClick(View v) {
 
+                process2 =true;
 
+                if(process3) process();
+                process="*";
+                number_one = Float.parseFloat(display.getText().toString());
 
             }
         });
@@ -380,6 +388,7 @@ if(display.getText().toString().length()<8) {
             public void onClick(View v) {
                 display.setText("0");
                 number_one=0.0f;
+                process="";
             }
         });
 
