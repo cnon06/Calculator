@@ -16,30 +16,6 @@ import android.widget.Toast;
 
 
 
-class MyDialogFragment extends DialogFragment {
-    @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
-
-        // Use the Builder class for convenient dialog construction
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("App Title");
-        builder.setMessage("This is an alert with no consequence");
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                // You don't have to do anything here if you just
-                // want it dismissed when clicked
-            }
-        });
-
-        // Create the AlertDialog object and return it
-        return builder.create();
-    }
-}
-
-
-
-
-
 
 
 public class MainActivity extends AppCompatActivity {
@@ -51,8 +27,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     String process = "";
-    Boolean process2=false,process3 = false;
-    Float number_one = null;
+
+   String number_one = "0";
+    //Long number_one = 0;
+    //Double tt3 = 0.0d;
 
 
    public void msg_box(String msg)
@@ -78,13 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
    public  void remove_zero(String de )
    {
-       String def = de.substring(de.indexOf('.'));
 
-       Float rref = Float.parseFloat(def);
-
-       if(rref==0.0f) de = de.subSequence(0,de.indexOf('.')).toString();
-
-       display.setText(de+"");
    }
 
    public void process()
@@ -95,54 +67,55 @@ public class MainActivity extends AppCompatActivity {
 
            case "*" :
 
-               Float rt = number_one * Float.parseFloat(display.getText().toString());
-               String de = rt+"";
-               remove_zero(de );
-               process="";
+
 
                break;
 
 
            case "+" :
 
-                  Float rt3 = number_one + Float.parseFloat(display.getText().toString());
-                  String de3 = rt3+"";
-                  remove_zero(de3 );
-                  process="";
 
                break;
 
            case "-" :
 
-               Float rt1 = number_one - Float.parseFloat(display.getText().toString());
-               String de1 = rt1+"";
-               remove_zero(de1 );
-               process="";
+
 
                break;
 
        }
-       process3=false;
+
 
 
    }
 
+
+   public String remove_first_zero(String numbers)
+   {
+       if(numbers.charAt(0)=='0') numbers=numbers.substring(1);
+       return numbers;
+   }
+
  public  void numbers (String numbers)
  {
+    // Integer yh = Integer.parseInt(numbers);
 
-if(display.getText().toString().length()<8) {
-    if(!display.getText().toString().contains("."))  if(numbers!=".") if(0==Float.parseFloat(display.getText().toString())) display.setText("");
-    display.setText(display.getText()+numbers); process3 =true;
+
+number_one = number_one+ numbers;
+
+
+display.setText(remove_first_zero(number_one));
+//Long ty = Long.parseLong("20");
+
 }
 
-     if (process2)
-     {
-         display.setText(numbers);
-         process2 =false;
-         //number_one = Float.parseFloat(display.getText().toString());
-         //msg_box(number_one.toString());
-     }
- }
+
+
+
+
+
+
+
 
 
     @Override
@@ -183,8 +156,11 @@ if(display.getText().toString().length()<8) {
             @Override
             public void onClick(View v) {
 
-                if(!display.getText().toString().contains(".")) numbers(".");
-                //msg_box("sinan".contains("z")+"");
+               if(!number_one.contains("."))
+
+               {
+                  if(number_one=="0") numbers("0."); else  numbers(".");
+               }
 
 
             }
@@ -193,27 +169,6 @@ if(display.getText().toString().length()<8) {
         n_p.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //if(display.getText().toString().length()<8)   if(!display.getText().toString().contains("."))  if(numbers!=".") if(0==Float.parseFloat(display.getText().toString())) display.setText("");
-
-
-                if(0!=Float.parseFloat(display.getText().toString()))
-                {
-                    String trr = display.getText().toString();
-                    //display.setText("-"+trr);
-
-                    if(trr.contains("-"))
-                    {
-                        //msg_box("sinan");
-                        trr= trr.replaceFirst("-","");
-                    }
-
-                    else
-                        trr = "-" + trr;
-
-                    display.setText(trr);
-                   // number_one = Float.parseFloat(display.getText().toString());
-                }
-
 
 
 
@@ -240,12 +195,6 @@ if(display.getText().toString().length()<8) {
             @Override
             public void onClick(View v) {
 
-                process2 =true;
-
-                if(process3) process();
-                process="-";
-                number_one = Float.parseFloat(display.getText().toString());
-
 
             }
         });
@@ -268,11 +217,6 @@ if(display.getText().toString().length()<8) {
             @Override
             public void onClick(View v) {
 
-                process2 =true;
-
-                if(process3) process();
-                process="*";
-                number_one = Float.parseFloat(display.getText().toString());
 
             }
         });
@@ -283,11 +227,6 @@ if(display.getText().toString().length()<8) {
             @Override
             public void onClick(View v) {
 
-                process2 =true;
-
-               if(process3) process();
-                process="+";
-                number_one = Float.parseFloat(display.getText().toString());
 
 
 
@@ -378,7 +317,7 @@ if(display.getText().toString().length()<8) {
         zero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                numbers("0");
+             if(number_one!="0")   numbers("0");
 
             }
         });
@@ -387,7 +326,8 @@ if(display.getText().toString().length()<8) {
             @Override
             public void onClick(View v) {
                 display.setText("0");
-                number_one=0.0f;
+               number_one="0";
+
                 process="";
             }
         });
