@@ -26,11 +26,13 @@ public class MainActivity extends AppCompatActivity {
     Button one,two,three,four,five,six,seven,eight,nine,zero,clear,add,subtract,multiply,divide, equal, n_p, dot;
 
 
-    String process = "";
+   // String process = "";
 
    String number_one = "0";
-    //Long number_one = 0;
-    //Double tt3 = 0.0d;
+
+   Float number_two=0.0f;
+
+
 
 
    public void msg_box(String msg)
@@ -54,36 +56,51 @@ public class MainActivity extends AppCompatActivity {
    }
 
 
-   public  void remove_zero(String de )
+   public  void remove_zero( )
    {
+       float yu = number_two;
+       int nnh = (int)yu;
+       float rt = (float) nnh;
+       Float wsd = rt;
 
+       Float hjk1 = number_two-wsd;
+
+       String fd3 = "";
+       if(hjk1==0.0f) fd3= nnh+""; else  fd3= number_two.toString();
+       display.setText(fd3);
+       //display.setText(number_two.toString());
    }
 
-   public void process()
+   public void process(String process)
    {
+
+       float n_o= Float.parseFloat(number_one);
 
        switch (process)
        {
 
            case "*" :
 
-
-
                break;
 
 
            case "+" :
 
+                number_two+=n_o;
 
                break;
 
            case "-" :
 
-
-
                break;
 
        }
+
+       remove_zero();
+
+       //display.setText(number_two.toString());
+       number_one="0";
+
 
 
 
@@ -108,13 +125,6 @@ display.setText(remove_first_zero(number_one));
 //Long ty = Long.parseLong("20");
 
 }
-
-
-
-
-
-
-
 
 
 
@@ -228,7 +238,7 @@ display.setText(remove_first_zero(number_one));
             public void onClick(View v) {
 
 
-
+                process("+");
 
             }
         });
@@ -327,8 +337,9 @@ display.setText(remove_first_zero(number_one));
             public void onClick(View v) {
                 display.setText("0");
                number_one="0";
+               number_two=0.0f;
 
-                process="";
+              //  process="";
             }
         });
 
