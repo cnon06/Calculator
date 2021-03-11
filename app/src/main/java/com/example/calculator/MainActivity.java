@@ -14,8 +14,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-
+import java.math.BigDecimal;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -30,7 +29,9 @@ public class MainActivity extends AppCompatActivity {
 
    String number_one = "0";
 
-   Float number_two=0.0f;
+
+  BigDecimal number_two = new BigDecimal("0");
+   //Float number_two=0.0f;
 
 
 
@@ -55,8 +56,8 @@ public class MainActivity extends AppCompatActivity {
 
    }
 
-
-   public  void remove_zero( )
+/*
+ public  void remove_zero( )
    {
        float yu = number_two;
        int nnh = (int)yu;
@@ -70,11 +71,13 @@ public class MainActivity extends AppCompatActivity {
        display.setText(fd3);
        //display.setText(number_two.toString());
    }
+ */
+
 
    public void process(String process)
    {
 
-       float n_o= Float.parseFloat(number_one);
+       //float n_o= Float.parseFloat(number_one);
 
        switch (process)
        {
@@ -86,7 +89,9 @@ public class MainActivity extends AppCompatActivity {
 
            case "+" :
 
-                number_two+=n_o;
+               number_two = number_two.add(new BigDecimal(number_one));
+
+               // number_two+=n_o;
 
                break;
 
@@ -96,9 +101,9 @@ public class MainActivity extends AppCompatActivity {
 
        }
 
-       remove_zero();
+      // remove_zero();
 
-       //display.setText(number_two.toString());
+       display.setText(number_two.toString());
        number_one="0";
 
 
@@ -337,7 +342,7 @@ display.setText(remove_first_zero(number_one));
             public void onClick(View v) {
                 display.setText("0");
                number_one="0";
-               number_two=0.0f;
+               number_two= new BigDecimal("0");
 
               //  process="";
             }
