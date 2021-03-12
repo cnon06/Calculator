@@ -24,9 +24,6 @@ public class MainActivity extends AppCompatActivity {
 
     Button one,two,three,four,five,six,seven,eight,nine,zero,clear,add,subtract,multiply,divide, equal, n_p, dot;
 
-   // String number_one = "0";
-
-    //BigDecimal number_two = new BigDecimal("0");
    String number_two=null, process=null;
 
    Boolean process_switch1 = false, process_switch2 =false;
@@ -51,23 +48,6 @@ public class MainActivity extends AppCompatActivity {
         alertDialog.show();
 
    }
-
-/*
- public  void remove_zero( )
-   {
-       float yu = number_two;
-       int nnh = (int)yu;
-       float rt = (float) nnh;
-       Float wsd = rt;
-
-       Float hjk1 = number_two-wsd;
-
-       String fd3 = "";
-       if(hjk1==0.0f) fd3= nnh+""; else  fd3= number_two.toString();
-       display.setText(fd3);
-       //display.setText(number_two.toString());
-   }
- */
 
 
    public void process(String process)
@@ -110,9 +90,7 @@ public class MainActivity extends AppCompatActivity {
                            break;
 
 
-                       case "y":
 
-                           break;
 
 
                        default:
