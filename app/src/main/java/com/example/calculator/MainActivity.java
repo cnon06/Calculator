@@ -24,16 +24,12 @@ public class MainActivity extends AppCompatActivity {
 
     Button one,two,three,four,five,six,seven,eight,nine,zero,clear,add,subtract,multiply,divide, equal, n_p, dot;
 
+   // String number_one = "0";
 
-   // String process = "";
+    //BigDecimal number_two = new BigDecimal("0");
+   String number_two=null, process=null;
 
-   String number_one = "0";
-
-
-  BigDecimal number_two = new BigDecimal("0");
-   //Float number_two=0.0f;
-
-
+   Boolean process_switch1 = false, process_switch2 =false;
 
 
    public void msg_box(String msg)
@@ -79,32 +75,75 @@ public class MainActivity extends AppCompatActivity {
 
        //float n_o= Float.parseFloat(number_one);
 
-       switch (process)
+       BigDecimal bg = new BigDecimal(display.getText().toString());
+
+
+
+
+       if(number_two!=null)
        {
+           if(process_switch2 )
+           {
+               try {
+                   switch (this.process)
+                   {
 
-           case "*" :
+                       case "*" :
 
-               break;
+                           break;
 
 
-           case "+" :
+                       case "+" :
 
-               number_two = number_two.add(new BigDecimal(number_one));
 
-               // number_two+=n_o;
+                           bg = new BigDecimal(number_two);
+                           number_two = bg.add(new BigDecimal(display.getText().toString())).toString();
+                           display.setText(number_two);
+                           //number_two=null;
+                          //process="y";
 
-               break;
 
-           case "-" :
+                           break;
 
-               break;
+                       case "-" :
 
+                           break;
+
+
+                       case "y":
+
+                           break;
+
+
+                       default:
+
+                           break;
+
+                   }
+
+
+
+               }
+               catch (Exception e)
+               {
+               //    msg_box(process);
+               }
        }
 
-      // remove_zero();
 
-       display.setText(number_two.toString());
-       number_one="0";
+
+       }
+           number_two= display.getText().toString();
+
+           this.process=process;
+           process_switch1 =true;
+           process_switch2 = false;
+
+
+
+
+
+
 
 
 
@@ -120,14 +159,24 @@ public class MainActivity extends AppCompatActivity {
 
  public  void numbers (String numbers)
  {
-    // Integer yh = Integer.parseInt(numbers);
 
 
-number_one = number_one+ numbers;
+    process_switch2 =true;
 
 
-display.setText(remove_first_zero(number_one));
-//Long ty = Long.parseLong("20");
+     //BigDecimal yu = new BigDecimal(display.getText()+numbers);
+    // display.setText(yu.toString());
+   if(process_switch1)
+   {
+       display.setText(remove_first_zero(numbers));
+       process_switch1=false;
+   } else
+     display.setText(remove_first_zero(display.getText()+numbers));
+
+   if(display.getText().toString().indexOf(".")==0) display.setText(0+display.getText().toString());
+
+
+
 
 }
 
@@ -171,12 +220,8 @@ display.setText(remove_first_zero(number_one));
             @Override
             public void onClick(View v) {
 
-               if(!number_one.contains("."))
-
-               {
-                  if(number_one=="0") numbers("0."); else  numbers(".");
-               }
-
+             //   if(!display.getText().toString().contains(".") || !process_switch2) numbers(".");
+                if(!display.getText().toString().contains(".")) numbers(".");
 
             }
         });
@@ -189,6 +234,14 @@ display.setText(remove_first_zero(number_one));
 
 
 
+                BigDecimal number_three = new BigDecimal(display.getText().toString());
+            number_three = number_three.multiply(new BigDecimal("-1"));
+          if(number_three.toString()!="0")
+          {
+              display.setText(number_three.toString());
+             // number_two=display.getText().toString();
+          }
+
 
             }
         });
@@ -199,7 +252,7 @@ display.setText(remove_first_zero(number_one));
             public void onClick(View v) {
 
 
-            //msg_box("sinan");
+
 
 
             }
@@ -243,7 +296,8 @@ display.setText(remove_first_zero(number_one));
             public void onClick(View v) {
 
 
-                process("+");
+              process("+");
+                //msg_box(number_two.toString());
 
             }
         });
@@ -332,7 +386,7 @@ display.setText(remove_first_zero(number_one));
         zero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             if(number_one!="0")   numbers("0");
+            numbers("0");
 
             }
         });
@@ -341,10 +395,10 @@ display.setText(remove_first_zero(number_one));
             @Override
             public void onClick(View v) {
                 display.setText("0");
-               number_one="0";
-               number_two= new BigDecimal("0");
+                number_two=null; process=null;
+                process_switch1 = false; process_switch2 =false;
 
-              //  process="";
+                number_two="";
             }
         });
 
