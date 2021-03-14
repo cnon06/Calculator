@@ -48,6 +48,15 @@ public class MainActivity extends AppCompatActivity {
    }
 
 
+   public void clear()
+   {
+       display.setText("0");
+       number_two=null; process=null;
+       process_switch1 = false; process_switch2 =false;
+       number_two="";
+   }
+
+
    public void process(String process)
    {
 
@@ -84,6 +93,24 @@ public class MainActivity extends AppCompatActivity {
                            display.setText(number_two);
                            break;
 
+                       case "/" :
+
+                           try {
+
+                               bg = new BigDecimal(number_two);
+                               number_two = bg.divide(new BigDecimal(display.getText().toString())).toString();
+                               display.setText(number_two);
+
+                           }
+                           catch (ArithmeticException ae)
+                           {
+                           // msg_box(ae.toString());
+                               msg_box("Err: Divided by zero");
+                               clear();
+                           }
+
+                           break;
+
 
                        default:
 
@@ -95,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
                }
                catch (Exception e)
                {
-               //    msg_box(process);
+              //  msg_box(e.toString());
                }
        }
 
@@ -233,7 +260,7 @@ public class MainActivity extends AppCompatActivity {
         divide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                process("/");
 
             }
         });
@@ -353,11 +380,19 @@ public class MainActivity extends AppCompatActivity {
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                display.setText("0");
+
+               clear();
+
+               /*
+
+                   display.setText("0");
                 number_two=null; process=null;
                 process_switch1 = false; process_switch2 =false;
-
                 number_two="";
+                */
+
+
+
             }
         });
 
