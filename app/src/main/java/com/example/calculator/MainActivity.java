@@ -43,8 +43,6 @@ public class MainActivity extends AppCompatActivity {
                 });
 
 
-
-
         alertDialog.show();
 
    }
@@ -53,17 +51,14 @@ public class MainActivity extends AppCompatActivity {
    public void process(String process)
    {
 
-       //float n_o= Float.parseFloat(number_one);
 
-       BigDecimal bg = new BigDecimal(display.getText().toString());
-
+       BigDecimal bg ;
 
 
-
-       if(number_two!=null)
+       if(number_two!=null && process_switch2)
        {
-           if(process_switch2 )
-           {
+           //if(process_switch2 )
+           //{
                try {
                    switch (this.process)
                    {
@@ -75,22 +70,17 @@ public class MainActivity extends AppCompatActivity {
 
                        case "+" :
 
-
                            bg = new BigDecimal(number_two);
                            number_two = bg.add(new BigDecimal(display.getText().toString())).toString();
                            display.setText(number_two);
-                           //number_two=null;
-                          //process="y";
-
 
                            break;
 
                        case "-" :
-
+                           bg = new BigDecimal(number_two);
+                           number_two = bg.subtract(new BigDecimal(display.getText().toString())).toString();
+                           display.setText(number_two);
                            break;
-
-
-
 
 
                        default:
@@ -98,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
                            break;
 
                    }
-
 
 
                }
@@ -110,40 +99,29 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-       }
+       //}
            number_two= display.getText().toString();
 
            this.process=process;
            process_switch1 =true;
            process_switch2 = false;
-
-
-
-
-
-
-
-
-
+       process_switch1 =true;
+       process_switch2 = false;
 
    }
 
 
    public String remove_first_zero(String numbers)
    {
-       if(numbers.charAt(0)=='0') numbers=numbers.substring(1);
+       if(numbers.charAt(0)=='0' && numbers.length()!=1) numbers=numbers.substring(1);
        return numbers;
    }
 
  public  void numbers (String numbers)
  {
-
-
     process_switch2 =true;
 
 
-     //BigDecimal yu = new BigDecimal(display.getText()+numbers);
-    // display.setText(yu.toString());
    if(process_switch1)
    {
        display.setText(remove_first_zero(numbers));
@@ -210,15 +188,22 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+            String ght2=null;
 
 
                 BigDecimal number_three = new BigDecimal(display.getText().toString());
-            number_three = number_three.multiply(new BigDecimal("-1"));
-          if(number_three.toString()!="0")
-          {
-              display.setText(number_three.toString());
-             // number_two=display.getText().toString();
-          }
+                number_three = number_three.multiply(new BigDecimal("-1"));
+                if(number_three.toString()!="0")
+                {
+                    display.setText(number_three.toString());
+
+                    if(  process_switch1 && !process_switch2 )
+                    {
+                        number_two = number_three.toString();
+                    }
+                }
+
+
 
 
             }
@@ -231,8 +216,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
             }
         });
 
@@ -241,7 +224,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
+                process("-");
             }
         });
 
@@ -250,8 +233,6 @@ public class MainActivity extends AppCompatActivity {
         divide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
 
 
             }
