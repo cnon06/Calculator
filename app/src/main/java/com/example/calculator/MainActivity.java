@@ -64,7 +64,9 @@ public class MainActivity extends AppCompatActivity {
                    {
 
                        case "*" :
-
+                           bg = new BigDecimal(number_two);
+                           number_two = bg.multiply(new BigDecimal(display.getText().toString())).toString();
+                           display.setText(number_two);
                            break;
 
 
@@ -132,8 +134,6 @@ public class MainActivity extends AppCompatActivity {
    if(display.getText().toString().indexOf(".")==0) display.setText(0+display.getText().toString());
 
 
-
-
 }
 
 
@@ -188,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-            String ght2=null;
+            //String ght2=null;
 
 
                 BigDecimal number_three = new BigDecimal(display.getText().toString());
@@ -243,7 +243,7 @@ public class MainActivity extends AppCompatActivity {
         multiply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                process("*");
 
             }
         });
