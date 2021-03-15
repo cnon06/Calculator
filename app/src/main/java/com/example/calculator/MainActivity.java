@@ -15,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -98,19 +100,26 @@ public class MainActivity extends AppCompatActivity {
                            try {
 
                                bg = new BigDecimal(number_two);
-                               number_two = bg.divide(new BigDecimal(display.getText().toString())).toString();
+                               MathContext mc = new MathContext(5, RoundingMode.HALF_EVEN) ;
+                               number_two = bg.divide(new BigDecimal(display.getText().toString()),mc).toString();
                                display.setText(number_two);
 
                            }
                            catch (ArithmeticException ae)
                            {
-                           // msg_box(ae.toString());
-                               msg_box("Err: Divided by zero");
+                            msg_box(ae.toString());
+                             // msg_box("Err: Divided by zero");
                                clear();
                            }
 
                            break;
 
+
+                       case "=" :
+                           bg = new BigDecimal(number_two);
+                           number_two = display.getText().toString();
+                           display.setText(number_two);
+                           break;
 
                        default:
 
@@ -241,7 +250,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
+                process("=");
 
             }
         });
