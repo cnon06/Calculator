@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView display;
 
-    Button one,two,three,four,five,six,seven,eight,nine,zero,clear,add,subtract,multiply,divide, equal, n_p, dot;
+    Button one,two,three,four,five,six,seven,eight,nine,zero,clear,add,subtract,multiply,divide, equal, n_p, dot, percent;
 
    String number_two=null, process=null;
 
@@ -74,6 +74,27 @@ public class MainActivity extends AppCompatActivity {
                    switch (this.process)
                    {
 
+                       case "%" :
+                           //msg_box("percent");
+                           bg = new BigDecimal(number_two);
+                           number_two = bg.multiply(new BigDecimal(display.getText().toString())).toString();
+
+                         bg = new BigDecimal(number_two);
+
+                           number_two = bg.multiply(new BigDecimal("0.01")).toString();
+
+                           bg = new BigDecimal(number_two);
+
+                          if (Float.parseFloat(bg.subtract(new BigDecimal(bg.toBigInteger())).toString())==0.0f)
+                          {
+                              number_two =bg.toBigInteger().toString();
+                          };
+
+                           display.setText(number_two);
+                           break;
+
+
+
                        case "*" :
                            bg = new BigDecimal(number_two);
                            number_two = bg.multiply(new BigDecimal(display.getText().toString())).toString();
@@ -107,8 +128,8 @@ public class MainActivity extends AppCompatActivity {
                            }
                            catch (ArithmeticException ae)
                            {
-                            msg_box(ae.toString());
-                             // msg_box("Err: Divided by zero");
+                            //msg_box(ae.toString());
+                              msg_box("Err: Divided by zero");
                                clear();
                            }
 
@@ -200,6 +221,7 @@ public class MainActivity extends AppCompatActivity {
         equal = (Button) findViewById(R.id.equal);
         n_p = (Button) findViewById(R.id.n_p);
         dot =  (Button) findViewById(R.id.dot);
+        percent =  (Button) findViewById(R.id.percent);
 
 
 
@@ -245,6 +267,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        percent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                process("%");
+
+            }
+        });
 
         equal.setOnClickListener(new View.OnClickListener() {
             @Override
