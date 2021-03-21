@@ -18,13 +18,15 @@ import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
 
+import static java.math.BigDecimal.ROUND_HALF_UP;
+
 
 public class MainActivity extends AppCompatActivity {
 
 
     TextView display;
 
-    Button one,two,three,four,five,six,seven,eight,nine,zero,clear,add,subtract,multiply,divide, equal, n_p, dot, percent;
+    Button one,two,three,four,five,six,seven,eight,nine,zero,clear,add,subtract,multiply,divide, equal, n_p, dot, percent, sqr;
 
    String number_two=null, process=null;
 
@@ -193,6 +195,23 @@ public class MainActivity extends AppCompatActivity {
 
 }
 
+/*
+ public static BigDecimal sqrt(BigDecimal A, final int SCALE) {
+        BigDecimal x0 = new BigDecimal("0");
+        BigDecimal x1 = new BigDecimal(Math.sqrt(A.doubleValue()));
+        while (!x0.equals(x1)) {
+            x0 = x1;
+            x1 = A.divide(x0, SCALE, ROUND_HALF_UP);
+            x1 = x1.add(x0);
+            x1 = x1.divide(TWO, SCALE, ROUND_HALF_UP);
+
+        }
+        return x1;
+    }
+ */
+
+
+
 
 
     @Override
@@ -222,6 +241,7 @@ public class MainActivity extends AppCompatActivity {
         n_p = (Button) findViewById(R.id.n_p);
         dot =  (Button) findViewById(R.id.dot);
         percent =  (Button) findViewById(R.id.percent);
+        sqr =  (Button) findViewById(R.id.sqr);
 
 
 
@@ -229,6 +249,27 @@ public class MainActivity extends AppCompatActivity {
         clear = (Button) findViewById(R.id.clear);
 
 
+        sqr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+               // BigDecimal number_three = new BigDecimal("81");
+               MathContext mc = new MathContext(5, RoundingMode.HALF_EVEN) ;
+                //number_three = number_three.
+                //number_three = number_three.pow( 2,mc);
+
+                Float rrf= Float.parseFloat(display.getText().toString());
+
+              BigDecimal number_three = new BigDecimal(Math.sqrt(rrf),mc);
+
+             //msg_box(number_three.toString());
+                display.setText(number_three.toString());
+
+
+
+            }
+        });
 
         dot.setOnClickListener(new View.OnClickListener() {
             @Override
