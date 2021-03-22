@@ -21,6 +21,10 @@ import java.math.RoundingMode;
 import static java.math.BigDecimal.ROUND_HALF_UP;
 
 
+
+
+
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -31,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
    String number_two=null, process=null;
 
    Boolean process_switch1 = false, process_switch2 =false;
+
+
+   thousandseperatorcoma t_seperator;
 
 
    public void msg_box(String msg)
@@ -364,7 +371,8 @@ public class MainActivity extends AppCompatActivity {
 
 
               process("+");
-                //msg_box(number_two.toString());
+                msg_box(t_seperator.thousand_separator("11.22"));
+                //msg_box("ffd");
 
             }
         });
