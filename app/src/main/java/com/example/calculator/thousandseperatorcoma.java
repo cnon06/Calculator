@@ -6,12 +6,34 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
-public class thousandseperatorcoma extends AppCompatActivity {
 
 
-     static String thousand_separator(String yh1) {
+
+class thousandseperatorcoma extends AppCompatActivity {
 
 
+
+
+   String get_text="bbv";
+
+   thousandseperatorcoma(String th)
+   {
+       get_text=th;
+   }
+
+
+ String get_text()
+    {
+     return get_text;
+      //return get_text2;
+    }
+
+
+
+
+     String set_text(String yh1) {
+
+  get_text=yh1;
 
           String yh2 = yh1;
 

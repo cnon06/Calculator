@@ -261,17 +261,23 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-               // BigDecimal number_three = new BigDecimal("81");
-               MathContext mc = new MathContext(5, RoundingMode.HALF_EVEN) ;
-                //number_three = number_three.
-                //number_three = number_three.pow( 2,mc);
 
-                Float rrf= Float.parseFloat(display.getText().toString());
 
-              BigDecimal number_three = new BigDecimal(Math.sqrt(rrf),mc);
+                try {
+                    MathContext mc = new MathContext(5, RoundingMode.HALF_EVEN) ;
 
-             //msg_box(number_three.toString());
-                display.setText(number_three.toString());
+                    Float rrf= Float.parseFloat(display.getText().toString());
+
+                    BigDecimal number_three = new BigDecimal(Math.sqrt(rrf),mc);
+
+                    display.setText(number_three.toString());
+                }
+                catch (Exception e)
+                {
+                    msg_box(e.toString());
+                }
+
+
 
 
 
@@ -371,7 +377,10 @@ public class MainActivity extends AppCompatActivity {
 
 
               process("+");
-                msg_box(t_seperator.thousand_separator("11.22"));
+
+               t_seperator = new thousandseperatorcoma("1233");
+                msg_box(t_seperator.set_text("12345.22"));
+                t_seperator.get_text();
                 //msg_box("ffd");
 
             }
