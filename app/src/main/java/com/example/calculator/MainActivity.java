@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
    Boolean process_switch1 = false, process_switch2 =false;
 
 
-   thousandseperatorcoma t_seperator;
+   thousandseperatorcoma t_seperator = new thousandseperatorcoma();
 
 
    public void msg_box(String msg)
@@ -378,7 +378,7 @@ public class MainActivity extends AppCompatActivity {
 
               process("+");
 
-               t_seperator = new thousandseperatorcoma("1233");
+               //t_seperator = new thousandseperatorcoma("1233");
                 msg_box(t_seperator.set_text("12345.22"));
                 t_seperator.get_text();
                 //msg_box("ffd");

@@ -16,10 +16,13 @@ class thousandseperatorcoma extends AppCompatActivity {
 
    String get_text="bbv";
 
+   /*
    thousandseperatorcoma(String th)
    {
        get_text=th;
    }
+    */
+
 
 
  String get_text()
