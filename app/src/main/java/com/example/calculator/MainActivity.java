@@ -61,7 +61,13 @@ public class MainActivity extends AppCompatActivity {
 
    public void clear()
    {
-       display.setText("0");
+
+
+      // display.setText("0");
+
+       display.setText(t_seperator.set_text("0"));
+
+
        number_two=null; process=null;
        process_switch1 = false; process_switch2 =false;
        number_two="";
@@ -77,17 +83,16 @@ public class MainActivity extends AppCompatActivity {
 
        if(number_two!=null && process_switch2)
        {
-           //if(process_switch2 )
-           //{
+
                try {
                    switch (this.process)
                    {
 
                        case "%" :
-                           //msg_box("percent");
-                           bg = new BigDecimal(number_two);
-                           number_two = bg.multiply(new BigDecimal(display.getText().toString())).toString();
 
+                           bg = new BigDecimal(number_two);
+                         //  number_two = bg.multiply(new BigDecimal(display.getText().toString())).toString();
+                           number_two = bg.multiply(new BigDecimal(t_seperator.get_text())).toString();
                          bg = new BigDecimal(number_two);
 
                            number_two = bg.multiply(new BigDecimal("0.01")).toString();
@@ -99,30 +104,37 @@ public class MainActivity extends AppCompatActivity {
                               number_two =bg.toBigInteger().toString();
                           };
 
-                           display.setText(number_two);
+                         //  display.setText(number_two);
+                           display.setText(t_seperator.set_text(number_two));
+
                            break;
 
 
 
                        case "*" :
                            bg = new BigDecimal(number_two);
-                           number_two = bg.multiply(new BigDecimal(display.getText().toString())).toString();
-                           display.setText(number_two);
+                           //number_two = bg.multiply(new BigDecimal(display.getText().toString())).toString();
+                           number_two = bg.multiply(new BigDecimal(t_seperator.get_text())).toString();
+                          // display.setText(number_two);
+                           display.setText(t_seperator.set_text(number_two));
                            break;
 
 
                        case "+" :
 
                            bg = new BigDecimal(number_two);
-                           number_two = bg.add(new BigDecimal(display.getText().toString())).toString();
-                           display.setText(number_two);
-
+                           //number_two = bg.add(new BigDecimal(display.getText().toString())).toString();
+                           number_two = bg.add(new BigDecimal(t_seperator.get_text())).toString();
+                          // display.setText(number_two);
+                           display.setText(t_seperator.set_text(number_two));
                            break;
 
                        case "-" :
                            bg = new BigDecimal(number_two);
-                           number_two = bg.subtract(new BigDecimal(display.getText().toString())).toString();
-                           display.setText(number_two);
+                          // number_two = bg.subtract(new BigDecimal(display.getText().toString())).toString();
+                           number_two = bg.subtract(new BigDecimal(t_seperator.get_text())).toString();
+                          // display.setText(number_two);
+                           display.setText(t_seperator.set_text(number_two));
                            break;
 
                        case "/" :
@@ -131,13 +143,15 @@ public class MainActivity extends AppCompatActivity {
 
                                bg = new BigDecimal(number_two);
                                MathContext mc = new MathContext(5, RoundingMode.HALF_EVEN) ;
-                               number_two = bg.divide(new BigDecimal(display.getText().toString()),mc).toString();
-                               display.setText(number_two);
+                               // number_two = bg.divide(new BigDecimal(display.getText().toString()),mc).toString();
+                               number_two = bg.divide(new BigDecimal(t_seperator.get_text()),mc).toString();
+                              // display.setText(number_two);
+                               display.setText(t_seperator.set_text(number_two));
 
                            }
                            catch (ArithmeticException ae)
                            {
-                            //msg_box(ae.toString());
+
                               msg_box("Err: Divided by zero");
                                clear();
                            }
@@ -146,9 +160,11 @@ public class MainActivity extends AppCompatActivity {
 
 
                        case "=" :
-                           bg = new BigDecimal(number_two);
-                           number_two = display.getText().toString();
-                           display.setText(number_two);
+                          // bg = new BigDecimal(number_two);
+                           // number_two = display.getText().toString();
+                           number_two = t_seperator.get_text();
+                          // display.setText(number_two);
+                           display.setText(t_seperator.set_text(number_two));
                            break;
 
                        default:
@@ -167,8 +183,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-       //}
-           number_two= display.getText().toString();
+
+          // number_two= display.getText().toString();
+
+       number_two= t_seperator.get_text();
 
            this.process=process;
            process_switch1 =true;
@@ -192,32 +210,19 @@ public class MainActivity extends AppCompatActivity {
 
    if(process_switch1)
    {
-       display.setText(remove_first_zero(numbers));
+      // display.setText(remove_first_zero(numbers));
+       display.setText(t_seperator.set_text(remove_first_zero(numbers)));
        process_switch1=false;
    } else
-     display.setText(remove_first_zero(display.getText()+numbers));
+    // display.setText(remove_first_zero(display.getText()+numbers));
+    //   display.setText(remove_first_zero(t_seperator.get_text()+numbers));
+       display.setText(t_seperator.set_text(remove_first_zero(t_seperator.get_text()+numbers)));
 
-   if(display.getText().toString().indexOf(".")==0) display.setText(0+display.getText().toString());
+   // if(display.getText().toString().indexOf(".")==0) display.setText(0+display.getText().toString());
+     if(t_seperator.get_text().indexOf(".")==0) display.setText(t_seperator.set_text(0+t_seperator.get_text()) );
 
 
 }
-
-/*
- public static BigDecimal sqrt(BigDecimal A, final int SCALE) {
-        BigDecimal x0 = new BigDecimal("0");
-        BigDecimal x1 = new BigDecimal(Math.sqrt(A.doubleValue()));
-        while (!x0.equals(x1)) {
-            x0 = x1;
-            x1 = A.divide(x0, SCALE, ROUND_HALF_UP);
-            x1 = x1.add(x0);
-            x1 = x1.divide(TWO, SCALE, ROUND_HALF_UP);
-
-        }
-        return x1;
-    }
- */
-
-
 
 
 
@@ -266,19 +271,18 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     MathContext mc = new MathContext(5, RoundingMode.HALF_EVEN) ;
 
-                    Float rrf= Float.parseFloat(display.getText().toString());
+                    //Float rrf= Float.parseFloat(display.getText().toString());
+                    Float rrf= Float.parseFloat(t_seperator.get_text());
 
                     BigDecimal number_three = new BigDecimal(Math.sqrt(rrf),mc);
 
-                    display.setText(number_three.toString());
+                  //  display.setText(number_three.toString());
+                    display.setText(t_seperator.set_text(number_three.toString()) );
                 }
                 catch (Exception e)
                 {
                     msg_box(e.toString());
                 }
-
-
-
 
 
             }
@@ -288,9 +292,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-             //   if(!display.getText().toString().contains(".") || !process_switch2) numbers(".");
-                if(!display.getText().toString().contains(".")) numbers(".");
 
+               // if(!display.getText().toString().contains(".")) numbers(".");
+                if(!t_seperator.get_text().contains(".")) numbers(".");
             }
         });
 
@@ -300,14 +304,13 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-            //String ght2=null;
-
-
-                BigDecimal number_three = new BigDecimal(display.getText().toString());
+                //BigDecimal number_three = new BigDecimal(display.getText().toString());
+                BigDecimal number_three = new BigDecimal(t_seperator.get_text());
                 number_three = number_three.multiply(new BigDecimal("-1"));
                 if(number_three.toString()!="0")
                 {
-                    display.setText(number_three.toString());
+                   // display.setText(number_three.toString());
+                    display.setText(t_seperator.set_text(number_three.toString()));
 
                     if(  process_switch1 && !process_switch2 )
                     {
@@ -378,16 +381,11 @@ public class MainActivity extends AppCompatActivity {
 
               process("+");
 
-               //t_seperator = new thousandseperatorcoma("1233");
-                msg_box(t_seperator.set_text("12345.22"));
-                t_seperator.get_text();
-                //msg_box("ffd");
+              //  msg_box(t_seperator.set_text("12345.22"));
+               // t_seperator.get_text();
 
             }
         });
-
-
-
 
 
         one.setOnClickListener(new View.OnClickListener() {
@@ -410,7 +408,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 numbers("3");
-
 
             }
         });
@@ -480,14 +477,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                clear();
-
-               /*
-
-                   display.setText("0");
-                number_two=null; process=null;
-                process_switch1 = false; process_switch2 =false;
-                number_two="";
-                */
 
 
 

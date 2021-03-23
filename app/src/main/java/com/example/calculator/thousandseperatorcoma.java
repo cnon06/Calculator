@@ -14,21 +14,16 @@ class thousandseperatorcoma extends AppCompatActivity {
 
 
 
-   String get_text="bbv";
+   String get_text="";
 
-   /*
-   thousandseperatorcoma(String th)
-   {
-       get_text=th;
-   }
-    */
+
 
 
 
  String get_text()
     {
      return get_text;
-      //return get_text2;
+
     }
 
 
@@ -68,13 +63,8 @@ class thousandseperatorcoma extends AppCompatActivity {
             if ((k) % 3 == 0 && i != 0) yh4 = ',' + yh4;
         }
 
-
         return yh4 + yh3;
 
-
-
-
- //return yh1;
 
      }
 
