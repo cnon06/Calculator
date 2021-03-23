@@ -1,12 +1,6 @@
-package com.example.calculator;
+package com.calculator2.calculator;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.DialogInterface;
-import android.os.Bundle;
-
-
 
 
 class thousandseperatorcoma extends AppCompatActivity {
