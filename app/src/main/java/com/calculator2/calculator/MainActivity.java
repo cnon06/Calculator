@@ -258,6 +258,11 @@ public class MainActivity extends AppCompatActivity {
 
 
                 try {
+
+                    number_two=null; process=null;
+                    process_switch1 = false; process_switch2 =false;
+
+
                     MathContext mc = new MathContext(5, RoundingMode.HALF_EVEN) ;
 
                     //Float rrf= Float.parseFloat(display.getText().toString());
