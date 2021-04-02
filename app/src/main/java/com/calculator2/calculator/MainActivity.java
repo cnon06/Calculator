@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
    thousandseperatorcoma t_seperator = new thousandseperatorcoma();
 
 
+
    public void msg_box(String msg)
    {
 
@@ -41,8 +42,7 @@ public class MainActivity extends AppCompatActivity {
                         dialog.dismiss();
                     }
                 });
-
-
+        
         alertDialog.show();
 
    }
@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
 
    public void clear()
    {
-
 
       // display.setText("0");
 
@@ -213,8 +212,6 @@ public class MainActivity extends AppCompatActivity {
 
 }
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -246,9 +243,11 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
         clear = (Button) findViewById(R.id.clear);
 
+
+
+        clear();
 
         sqr.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -257,7 +256,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                try {
+              try {
 
                     number_two=null; process=null;
                     process_switch1 = false; process_switch2 =false;
@@ -266,17 +265,26 @@ public class MainActivity extends AppCompatActivity {
                     MathContext mc = new MathContext(5, RoundingMode.HALF_EVEN) ;
 
                     //Float rrf= Float.parseFloat(display.getText().toString());
-                    Float rrf= Float.parseFloat(t_seperator.get_text());
+
+                    String fde = t_seperator.get_text();
+                   if(fde==null) fde = "9";
+                    //msg_box(fde);
+                    Float rrf= Float.parseFloat(fde);
 
                     BigDecimal number_three = new BigDecimal(Math.sqrt(rrf),mc);
 
                   //  display.setText(number_three.toString());
+
                     display.setText(t_seperator.set_text(number_three.toString()) );
-                }
+
+
+              }
                 catch (Exception e)
                 {
                     msg_box(e.toString());
                 }
+
+
 
 
             }
