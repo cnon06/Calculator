@@ -16,6 +16,8 @@ class thousandseperatorcoma extends AppCompatActivity {
 
  String get_text()
     {
+
+
      return get_text;
 
     }
@@ -57,7 +59,22 @@ class thousandseperatorcoma extends AppCompatActivity {
             if ((k) % 3 == 0 && i != 0) yh4 = ',' + yh4;
         }
 
-        return yh4 + yh3;
+
+         String ss = yh4 + yh3;
+
+
+        try {
+             Integer.parseInt(ss.charAt(0)+"");
+         }
+         catch (Exception e)
+         {
+             if(ss.charAt(1)==',')  ss=ss.replaceFirst(",","");
+
+         }
+
+
+
+        return ss;
 
 
      }
