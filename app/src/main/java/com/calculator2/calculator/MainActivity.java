@@ -254,7 +254,50 @@ public class MainActivity extends AppCompatActivity {
 
         clear();
 
-        sqr.setOnClickListener(new View.OnClickListener() {
+
+        sqr.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch(event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        sqr.setBackgroundColor(Color.RED);
+                        return true;
+                    case MotionEvent.ACTION_UP:
+                        sqr.setBackgroundColor(Color.parseColor("#17615B"));
+
+                        try {
+                            number_two=null; process=null;
+                            process_switch1 = false; process_switch2 =false;
+
+                            MathContext mc = new MathContext(5, RoundingMode.HALF_EVEN) ;
+
+                            String fde = t_seperator.get_text();
+                            if(fde==null) fde = "9";
+
+                            Float rrf= Float.parseFloat(fde);
+
+                            BigDecimal number_three = new BigDecimal(Math.sqrt(rrf),mc);
+
+                            display.setText(t_seperator.set_text(number_three.toString()) );
+
+                        }
+                        catch (Exception e)
+                        {
+                            msg_box(e.toString());
+                        }
+
+
+                        // process("/");
+                        return true;
+                }
+                return false;
+            }
+        });
+
+
+
+        /*
+           sqr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -262,26 +305,19 @@ public class MainActivity extends AppCompatActivity {
 
 
               try {
-
                     number_two=null; process=null;
                     process_switch1 = false; process_switch2 =false;
 
-
                     MathContext mc = new MathContext(5, RoundingMode.HALF_EVEN) ;
-
-                    //Float rrf= Float.parseFloat(display.getText().toString());
 
                     String fde = t_seperator.get_text();
                    if(fde==null) fde = "9";
-                    //msg_box(fde);
+
                     Float rrf= Float.parseFloat(fde);
 
                     BigDecimal number_three = new BigDecimal(Math.sqrt(rrf),mc);
 
-                  //  display.setText(number_three.toString());
-
                     display.setText(t_seperator.set_text(number_three.toString()) );
-
 
               }
                 catch (Exception e)
@@ -289,34 +325,99 @@ public class MainActivity extends AppCompatActivity {
                     msg_box(e.toString());
                 }
 
+            }
+        });
+         */
 
+        dot.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch(event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        dot.setBackgroundColor(Color.RED);
+                        return true;
+                    case MotionEvent.ACTION_UP:
+                        dot.setBackgroundColor(Color.parseColor("#17615B"));
+
+                        try {
+                            if(!t_seperator.get_text().contains(".")) numbers(".");
+                        }
+                        catch (Exception e)
+                        {
+                            // msg_box(e.toString());
+                        }
+
+                        // process("/");
+                        return true;
+                }
+                return false;
+            }
+        });
+
+
+        /*
+         dot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                try {
+                    if(!t_seperator.get_text().contains(".")) numbers(".");
+                }
+                catch (Exception e)
+                {
+                   // msg_box(e.toString());
+                }
 
 
             }
         });
+         */
 
-        dot.setOnClickListener(new View.OnClickListener() {
+
+        n_p.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View v) {
+            public boolean onTouch(View v, MotionEvent event) {
+                switch(event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        n_p.setBackgroundColor(Color.RED);
+                        return true;
+                    case MotionEvent.ACTION_UP:
+                        n_p.setBackgroundColor(Color.parseColor("#17615B"));
+
+                        BigDecimal number_three = new BigDecimal(t_seperator.get_text());
+                        number_three = number_three.multiply(new BigDecimal("-1"));
+                        if(number_three.toString()!="0")
+                        {
+
+                            display.setText(t_seperator.set_text(number_three.toString()));
+
+                            if(  process_switch1 && !process_switch2 )
+                            {
+                                number_two = number_three.toString();
+                            }
+                        }
 
 
-               // if(!display.getText().toString().contains(".")) numbers(".");
-                if(!t_seperator.get_text().contains(".")) numbers(".");
+                        return true;
+                }
+                return false;
             }
         });
 
-        n_p.setOnClickListener(new View.OnClickListener() {
+
+        /*
+         n_p.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
 
-                //BigDecimal number_three = new BigDecimal(display.getText().toString());
+
                 BigDecimal number_three = new BigDecimal(t_seperator.get_text());
                 number_three = number_three.multiply(new BigDecimal("-1"));
                 if(number_three.toString()!="0")
                 {
-                   // display.setText(number_three.toString());
+
                     display.setText(t_seperator.set_text(number_three.toString()));
 
                     if(  process_switch1 && !process_switch2 )
@@ -326,13 +427,35 @@ public class MainActivity extends AppCompatActivity {
                 }
 
 
+            }
+        });
+         */
 
 
+
+
+        percent.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch(event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        percent.setBackgroundColor(Color.RED);
+                        return true;
+                    case MotionEvent.ACTION_UP:
+                        percent.setBackgroundColor(Color.parseColor("#17615B"));
+
+                        process("%");
+
+
+                        return true;
+                }
+                return false;
             }
         });
 
 
-        percent.setOnClickListener(new View.OnClickListener() {
+        /*
+         percent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -340,8 +463,30 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+         */
 
-        equal.setOnClickListener(new View.OnClickListener() {
+
+        equal.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch(event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        equal.setBackgroundColor(Color.RED);
+                        return true;
+                    case MotionEvent.ACTION_UP:
+                        equal.setBackgroundColor(Color.parseColor("#17615B"));
+
+                       // process("%");
+                        process("=");
+
+                        return true;
+                }
+                return false;
+            }
+        });
+
+        /*
+         equal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -349,15 +494,38 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+         */
+
+        subtract.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch(event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        subtract.setBackgroundColor(Color.RED);
+                        return true;
+                    case MotionEvent.ACTION_UP:
+                        subtract.setBackgroundColor(Color.parseColor("#17615B"));
 
 
-        subtract.setOnClickListener(new View.OnClickListener() {
+                        process("-");
+
+                        return true;
+                }
+                return false;
+            }
+        });
+
+
+/*
+subtract.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 process("-");
             }
         });
+ */
+
 
 
 
@@ -395,49 +563,135 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        multiply.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch(event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        multiply.setBackgroundColor(Color.RED);
+                        return true;
+                    case MotionEvent.ACTION_UP:
+                        multiply.setBackgroundColor(Color.parseColor("#17615B"));
+                        process("*");
+                        return true;
+                }
+                return false;
+            }
+        });
 
-
-
-        multiply.setOnClickListener(new View.OnClickListener() {
+/*
+ multiply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 process("*");
 
             }
         });
+ */
 
 
-
-        add.setOnClickListener(new View.OnClickListener() {
+        add.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View v) {
-
-
-              process("+");
-
-              //  msg_box(t_seperator.set_text("12345.22"));
-               // t_seperator.get_text();
-
+            public boolean onTouch(View v, MotionEvent event) {
+                switch(event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        add.setBackgroundColor(Color.RED);
+                        return true;
+                    case MotionEvent.ACTION_UP:
+                        add.setBackgroundColor(Color.parseColor("#17615B"));
+                        process("+");
+                        return true;
+                }
+                return false;
             }
         });
 
 
-        one.setOnClickListener(new View.OnClickListener() {
+/*
+   add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              process("+");
+            }
+        });
+ */
+
+
+
+        one.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch(event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        one.setBackgroundColor(Color.RED);
+                        return true;
+                    case MotionEvent.ACTION_UP:
+                        one.setBackgroundColor(Color.parseColor("#17615B"));
+
+                        numbers("1");
+                        return true;
+                }
+                return false;
+            }
+        });
+
+/*
+ one.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                         numbers("1");
                         }
         });
+ */
 
-        two.setOnClickListener(new View.OnClickListener() {
+
+        two.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch(event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        two.setBackgroundColor(Color.RED);
+                        return true;
+                    case MotionEvent.ACTION_UP:
+                        two.setBackgroundColor(Color.parseColor("#17615B"));
+
+                        numbers("2");
+                        return true;
+                }
+                return false;
+            }
+        });
+
+        /*
+         two.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 numbers("2");
 
             }
         });
+         */
 
+
+        three.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch(event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        three.setBackgroundColor(Color.RED);
+                        return true;
+                    case MotionEvent.ACTION_UP:
+                        three.setBackgroundColor(Color.parseColor("#17615B"));
+
+                        numbers("3");
+                        return true;
+                }
+                return false;
+            }
+        });
+
+        /*
         three.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -445,8 +699,28 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+         */
 
-        four.setOnClickListener(new View.OnClickListener() {
+
+        four.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch(event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        four.setBackgroundColor(Color.RED);
+                        return true;
+                    case MotionEvent.ACTION_UP:
+                        four.setBackgroundColor(Color.parseColor("#17615B"));
+
+                        numbers("4");
+                        return true;
+                }
+                return false;
+            }
+        });
+
+        /*
+         four.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -454,8 +728,28 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+         */
 
-        five.setOnClickListener(new View.OnClickListener() {
+        five.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch(event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        five.setBackgroundColor(Color.RED);
+                        return true;
+                    case MotionEvent.ACTION_UP:
+                        five.setBackgroundColor(Color.parseColor("#17615B"));
+
+                        numbers("5");
+                        return true;
+                }
+                return false;
+            }
+        });
+
+
+        /*
+         five.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -464,7 +758,27 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        six.setOnClickListener(new View.OnClickListener() {
+         */
+
+        six.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch(event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        six.setBackgroundColor(Color.RED);
+                        return true;
+                    case MotionEvent.ACTION_UP:
+                        six.setBackgroundColor(Color.parseColor("#17615B"));
+
+                        numbers("6");
+                        return true;
+                }
+                return false;
+            }
+        });
+
+        /*
+         six.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 numbers("6");
@@ -472,15 +786,57 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+         */
 
-        seven.setOnClickListener(new View.OnClickListener() {
+
+        seven.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch(event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        seven.setBackgroundColor(Color.RED);
+                        return true;
+                    case MotionEvent.ACTION_UP:
+                        seven.setBackgroundColor(Color.parseColor("#17615B"));
+
+                        numbers("7");
+                        return true;
+                }
+                return false;
+            }
+        });
+
+
+        /*
+         seven.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 numbers("7");
             }
         });
+         */
 
-        eight.setOnClickListener(new View.OnClickListener() {
+
+
+        eight.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch(event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        eight.setBackgroundColor(Color.RED);
+                        return true;
+                    case MotionEvent.ACTION_UP:
+                        eight.setBackgroundColor(Color.parseColor("#17615B"));
+
+                        numbers("8");
+                        return true;
+                }
+                return false;
+            }
+        });
+
+        /*
+         eight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -488,8 +844,28 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+         */
 
-        nine.setOnClickListener(new View.OnClickListener() {
+
+        nine.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch(event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        nine.setBackgroundColor(Color.RED);
+                        return true;
+                    case MotionEvent.ACTION_UP:
+                        nine.setBackgroundColor(Color.parseColor("#17615B"));
+
+                        numbers("9");
+                        return true;
+                }
+                return false;
+            }
+        });
+
+        /*
+          nine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -497,15 +873,57 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+         */
 
-        zero.setOnClickListener(new View.OnClickListener() {
+        zero.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch(event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        zero.setBackgroundColor(Color.RED);
+                        return true;
+                    case MotionEvent.ACTION_UP:
+                        zero.setBackgroundColor(Color.parseColor("#17615B"));
+
+                        numbers("0");
+                        return true;
+                }
+                return false;
+            }
+        });
+
+        /*
+         zero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
             numbers("0");
 
             }
         });
+         */
 
+
+        clear.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch(event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        clear.setBackgroundColor(Color.RED);
+                        return true;
+                    case MotionEvent.ACTION_UP:
+                        clear.setBackgroundColor(Color.parseColor("#17615B"));
+
+                        //numbers("0");
+
+                        clear();
+
+                        return true;
+                }
+                return false;
+            }
+        });
+
+        /*
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -516,6 +934,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+         */
+
 
     }
 }
