@@ -184,8 +184,12 @@ public class MainActivity extends AppCompatActivity {
            this.process=process;
            process_switch1 =true;
            process_switch2 = false;
-       process_switch1 =true;
+
+           /*
+            process_switch1 =true;
        process_switch2 = false;
+            */
+
 
    }
 
@@ -343,6 +347,7 @@ public class MainActivity extends AppCompatActivity {
                         if(!t_seperator.get_text.contains(".")) numbers(".");
                         try {
                            // numbers(".");
+                            if(process_switch1) numbers("0.");
                            if(!t_seperator.get_text.contains(".")) numbers(".");
                         }
                         catch (Exception e)
