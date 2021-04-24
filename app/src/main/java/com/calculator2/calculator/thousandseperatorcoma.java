@@ -68,7 +68,15 @@ class thousandseperatorcoma extends AppCompatActivity {
          }
          catch (Exception e)
          {
-             if(ss.charAt(1)==',')  ss=ss.replaceFirst(",","");
+
+             try {
+                 if(ss.charAt(1)==',')  ss=ss.replaceFirst(",","");
+             }
+             catch ( Exception er)
+             {
+
+             }
+
 
          }
 

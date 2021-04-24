@@ -338,13 +338,20 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     case MotionEvent.ACTION_UP:
                         dot.setBackgroundColor(Color.parseColor("#17615B"));
-
+                       // t_seperator.set_text("0.");
+                     //if(t_seperator.get_text.isEmpty()) "0.";
+                        if(!t_seperator.get_text.contains(".")) numbers(".");
                         try {
-                            if(!t_seperator.get_text().contains(".")) numbers(".");
+                           // numbers(".");
+                           if(!t_seperator.get_text.contains(".")) numbers(".");
                         }
                         catch (Exception e)
                         {
-                            // msg_box(e.toString());
+                            //clear();
+                            //umbers("0");
+                           msg_box(e.toString());
+
+                          //msg_box(e.toString());
                         }
 
                         // process("/");
