@@ -7,10 +7,10 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.calculator3.calculator"
+        applicationId "com.calculator4.calculator"
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode 11
+        versionCode 13
         versionName "1.02"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
