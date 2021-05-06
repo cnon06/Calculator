@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="87dp">
+        android:id="@+id/tableLayout"
+        android:layout_width="306dp"
+        android:layout_height="511dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TableRow
             android:layout_width="match_parent"
@@ -19,8 +24,8 @@
 
             <TextView
                 android:id="@+id/display"
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
+                android:layout_width="256dp"
+                android:layout_height="91dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
                 android:layout_span="4"
@@ -33,13 +38,13 @@
         </TableRow>
 
         <TableRow
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center">
 
             <Button
                 android:id="@+id/seven"
-                android:layout_width="60dp"
+                android:layout_width="57dp"
                 android:layout_height="60dp"
                 android:layout_margin="5dp"
                 android:background="#17615B"
@@ -290,6 +295,23 @@
 
         </TableRow>
 
+
     </TableLayout>
+
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="280dp"
+        android:layout_height="51dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="568dp"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-2857067127002684/2315395667"
+        app:layout_constraintEnd_toEndOf="@+id/tableLayout"
+        app:layout_constraintHorizontal_bias="0.789"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tableLayout"
+        tools:ignore="MissingConstraints"></com.google.android.gms.ads.AdView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
