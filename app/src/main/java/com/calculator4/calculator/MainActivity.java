@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -163,7 +164,14 @@ public class MainActivity extends AppCompatActivity {
                            // number_two = display.getText().toString();
                            number_two = t_seperator.get_text();
                           // display.setText(number_two);
+
+
+
                            display.setText(t_seperator.set_text(number_two));
+
+
+
+
                            break;
 
                        default:
@@ -558,6 +566,13 @@ mAdView = findViewById(R.id.adView);
                         equal.setBackgroundColor(Color.RED);
                         Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                         vibe.vibrate(100);
+                       /*
+                          String sde5 = "123.45";
+                        String [] fdd2 = sde5.split(".");
+                        msg_box(fdd2[0]);
+                        */
+
+
                         return true;
                     case MotionEvent.ACTION_UP:
                         equal.setBackgroundColor(Color.parseColor("#17615B"));
@@ -568,8 +583,11 @@ mAdView = findViewById(R.id.adView);
                         return true;
                 }
                 return false;
+
             }
         });
+
+
 
         /*
          equal.setOnClickListener(new View.OnClickListener() {
