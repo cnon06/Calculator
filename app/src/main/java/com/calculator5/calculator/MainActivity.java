@@ -1,4 +1,4 @@
-package com.calculator4.calculator;
+package com.calculator5.calculator;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
 
    thousandseperatorcoma t_seperator = new thousandseperatorcoma();
+   process_display p_display = new process_display();
 
 
 
@@ -105,7 +106,8 @@ public class MainActivity extends AppCompatActivity {
                           };
 
                          //  display.setText(number_two);
-                           display.setText(t_seperator.set_text(number_two));
+                           //display.setText(t_seperator.set_text(number_two));
+                           display.setText(p_display.output(t_seperator.set_text(number_two)));
 
                            break;
 
@@ -116,7 +118,8 @@ public class MainActivity extends AppCompatActivity {
                            //number_two = bg.multiply(new BigDecimal(display.getText().toString())).toString();
                            number_two = bg.multiply(new BigDecimal(t_seperator.get_text())).toString();
                           // display.setText(number_two);
-                           display.setText(t_seperator.set_text(number_two));
+                           //display.setText(t_seperator.set_text(number_two));
+                           display.setText(p_display.output(t_seperator.set_text(number_two)));
                            break;
 
 
@@ -126,7 +129,8 @@ public class MainActivity extends AppCompatActivity {
                            //number_two = bg.add(new BigDecimal(display.getText().toString())).toString();
                            number_two = bg.add(new BigDecimal(t_seperator.get_text())).toString();
                           // display.setText(number_two);
-                           display.setText(t_seperator.set_text(number_two));
+                           //display.setText(t_seperator.set_text(number_two));
+                           display.setText(p_display.output(t_seperator.set_text(number_two)));
                            break;
 
                        case "-" :
@@ -134,7 +138,8 @@ public class MainActivity extends AppCompatActivity {
                           // number_two = bg.subtract(new BigDecimal(display.getText().toString())).toString();
                            number_two = bg.subtract(new BigDecimal(t_seperator.get_text())).toString();
                           // display.setText(number_two);
-                           display.setText(t_seperator.set_text(number_two));
+                           //display.setText(t_seperator.set_text(number_two));
+                           display.setText(p_display.output(t_seperator.set_text(number_two)));
                            break;
 
                        case "/" :
@@ -146,7 +151,8 @@ public class MainActivity extends AppCompatActivity {
                                // number_two = bg.divide(new BigDecimal(display.getText().toString()),mc).toString();
                                number_two = bg.divide(new BigDecimal(t_seperator.get_text()),mc).toString();
                               // display.setText(number_two);
-                               display.setText(t_seperator.set_text(number_two));
+                               //display.setText(t_seperator.set_text(number_two));
+                               display.setText(p_display.output(t_seperator.set_text(number_two)));
 
                            }
                            catch (ArithmeticException ae)
@@ -160,14 +166,11 @@ public class MainActivity extends AppCompatActivity {
 
 
                        case "=" :
-                          // bg = new BigDecimal(number_two);
-                           // number_two = display.getText().toString();
-                           number_two = t_seperator.get_text();
-                          // display.setText(number_two);
 
 
+                          // display.setText(t_seperator.set_text(number_two));
 
-                           display.setText(t_seperator.set_text(number_two));
+                           display.setText(p_display.output(t_seperator.set_text(number_two)));
 
 
 
@@ -190,19 +193,11 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-          // number_two= display.getText().toString();
-
        number_two= t_seperator.get_text();
 
            this.process=process;
            process_switch1 =true;
            process_switch2 = false;
-
-           /*
-            process_switch1 =true;
-       process_switch2 = false;
-            */
 
 
    }
@@ -579,6 +574,8 @@ mAdView = findViewById(R.id.adView);
 
                        // process("%");
                         process("=");
+                        number_two=null; process=null;
+                        process_switch1 = false; process_switch2 =false;
 
                         return true;
                 }

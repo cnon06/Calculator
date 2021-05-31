@@ -1,10 +1,7 @@
-package com.calculator4.calculator;
+package com.calculator5.calculator;
 
-import android.content.DialogInterface;
 import android.util.Log;
-import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -92,21 +89,6 @@ class thousandseperatorcoma extends AppCompatActivity {
 
 
 
-         if(ss.contains("."))
-         {
-             String wea3 = ss.substring(ss.indexOf(".")+1);
-
-             Integer ngg4 = Integer.parseInt(wea3);
-
-             if(ngg4==0)
-             {
-                 ss = ss.substring(0,ss.indexOf("."));
-             }
-
-
-
-            // Log.d("",wea2);
-         }
 
 
         return ss;
