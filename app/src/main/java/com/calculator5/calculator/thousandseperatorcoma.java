@@ -69,7 +69,7 @@ class thousandseperatorcoma extends AppCompatActivity {
          String ss = yh4 + yh3;
 
 
-        try {
+          try {
              Integer.parseInt(ss.charAt(0)+"");
          }
          catch (Exception e)
@@ -85,6 +85,9 @@ class thousandseperatorcoma extends AppCompatActivity {
 
 
          }
+
+
+
 
 
 

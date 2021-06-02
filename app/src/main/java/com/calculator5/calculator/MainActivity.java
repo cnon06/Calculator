@@ -131,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
                           // display.setText(number_two);
                            //display.setText(t_seperator.set_text(number_two));
                            display.setText(p_display.output(t_seperator.set_text(number_two)));
+                           //number_two= t_seperator.get_text();
                            break;
 
                        case "-" :
@@ -167,13 +168,11 @@ public class MainActivity extends AppCompatActivity {
 
                        case "=" :
 
-
                           // display.setText(t_seperator.set_text(number_two));
-
-                           display.setText(p_display.output(t_seperator.set_text(number_two)));
-
-
-
+                           //display.setText(p_display.output(t_seperator.set_text(number_two)));
+                           //msg_box("sin");
+                           //number_two=null;
+                           //number_two="";
 
                            break;
 
@@ -193,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-       number_two= t_seperator.get_text();
+        number_two= t_seperator.get_text();
 
            this.process=process;
            process_switch1 =true;
@@ -258,38 +257,6 @@ public class MainActivity extends AppCompatActivity {
 mAdView = findViewById(R.id.adView);
             AdRequest adRequest = new AdRequest.Builder().build();
             mAdView.loadAd(adRequest);
-
-
-
-
-
-
-
-/*
- AdRequest adRequest = new AdRequest.Builder().build();
-  InterstitialAd.load(this,"ca-app-pub-2857067127002684/4435481916", adRequest, new InterstitialAdLoadCallback() {
-            @Override
-            public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                // The mInterstitialAd reference will be null until
-                // an ad is loaded.
-                mInterstitialAd = interstitialAd;
-               // Log.i(TAG, "onAdLoaded");
-            }
-
-            @Override
-            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                // Handle the error
-               // Log.i(Tag, loadAdError.getMessage());
-                 msg_box(loadAdError.getMessage());
-                mInterstitialAd = null;
-            }
-        });
- */
-
-
-
-
-
 
 
 
@@ -574,8 +541,14 @@ mAdView = findViewById(R.id.adView);
 
                        // process("%");
                         process("=");
-                        number_two=null; process=null;
+                        //number_two="";
+
+                        /*
+                           number_two=null; process=null;
                         process_switch1 = false; process_switch2 =false;
+                         */
+
+
 
                         return true;
                 }
